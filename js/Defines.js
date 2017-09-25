@@ -1,3 +1,6 @@
+/* Arraya >< ·> */
+FRUTAS = [ ];
+
 /* Dimentsioak */
 CANVAS_WIDTH = 720;
 CANVAS_HEIGHT = 480;
@@ -12,7 +15,7 @@ G = 9.8;
 VY_KTE = 0.5;
 
 /* Zenbatero kalkulatzen den posizioa */
-OFFSET = 0.25; 
+OFFSET = 0.12; 
 
 /* vy parametroak frutak pantaila barruan ager daitezen */
 VY_MAX = -95

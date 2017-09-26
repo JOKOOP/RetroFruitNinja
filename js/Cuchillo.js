@@ -3,19 +3,24 @@ WIDTH = 100
 
 class Cuchillo {
 
-  constructor (x, y){
-    this.x = x;
-    this.y = y;
+  constructor (){
+    this.y = 440;
     this.height = HEIGHT;
     this.width = WIDTH;
   }
 
-  draw(context){
-    context.beginPath();
-    context.rect(this.x, this.y, this.width, this.height);
-    context.fillStyle = "#0095DD"; // color
-    context.fill();
-    context.closePath();
+  draw(){
+	var x = 0;
+    fill('#ADADAD');
+	if(mouseX <= this.width/2){
+		x = 0;
+	}else if(mouseX >= CANVAS_WIDTH - this.width/2){
+		x= CANVAS_WIDTH - this.width;
+	}else{
+		x= mouseX-this.width/2;
+	}
+	rect(x, this.y, this.width, this.height);
+	
   }
 
   move(){
@@ -25,5 +30,6 @@ class Cuchillo {
   check_collision(){
 
   }
+
 
 }

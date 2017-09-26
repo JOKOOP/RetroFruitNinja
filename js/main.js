@@ -1,7 +1,9 @@
 function setup() {
   var canvas = createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
+  CUCHILLO = new Cuchillo();
   configureCanvas(canvas);  
   frameRate(FPS);
+
   for (NUMBOLAS; NUMBOLAS != 0; NUMBOLAS--){
     FRUTAS.push(createFruta());
   }
@@ -16,13 +18,17 @@ function draw() {
       FRUTAS.splice(i, 1);
       FRUTAS.push(createFruta());
     }
+	
   }
+	CUCHILLO.draw();  
+  
 }
 
 function configureCanvas (canvas) {
   canvas.parent('game-holder');
   var canvasHTML = document.getElementById('defaultCanvas0');
   canvasHTML.className = 'game';
+  
 }
 
 function createFruta () {

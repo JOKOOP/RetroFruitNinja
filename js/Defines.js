@@ -6,7 +6,7 @@ CANVAS_WIDTH = 720;
 CANVAS_HEIGHT = 480;
 
 /* Framerate */
-FPS = 60;
+FPS = 30;
 
 /* Gravity */
 G = 9.8;
@@ -23,3 +23,9 @@ VY_MIN = -75
 
 /* Marrazteko radioa */
 RADIUM = 20;
+
+/* Bola kopurua */
+NUMBOLAS = 4;
+
+/* Zailtasuna */
+HARDNESS = 0.85;

@@ -2,10 +2,9 @@ function setup() {
   var canvas = createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
   configureCanvas(canvas);  
   frameRate(FPS);
-
-  FRUTAS.push(createFruta());
-  FRUTAS.push(createFruta());
-  FRUTAS.push(createFruta());
+  for (NUMBOLAS; NUMBOLAS != 0; NUMBOLAS--){
+    FRUTAS.push(createFruta());
+  }
 }
 
 function draw() {
@@ -30,6 +29,6 @@ function createFruta () {
   var x = Math.floor((Math.random() * 520) + 100);
   var vx = Math.floor((Math.random() * 21) - 10);
   var vy = Math.floor((Math.random() * (VY_MAX - VY_MIN + 1)) + VY_MIN);
-  var bomb = (Math.random() > 0.9) ? true : false;
+  var bomb = (Math.random() > HARDNESS) ? true : false;
   return new Fruta(x, CANVAS_HEIGHT, vx, vy, bomb);
 }

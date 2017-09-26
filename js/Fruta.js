@@ -18,7 +18,7 @@ class Fruta { // No estoy muy deacuerdo con el nombre pero es absurdo hacer 2 cl
     if(this.bomba){
       return '#000000';
     }else{
-      return '#EF10A0';
+      return '#EAA014';
     }
   }
 

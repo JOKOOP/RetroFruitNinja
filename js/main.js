@@ -1,7 +1,8 @@
 function setup() {
   var canvas = createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
   CUCHILLO = new Cuchillo();
-  configureCanvas(canvas);  
+  MUSICA = new Musica();
+  configureCanvas(canvas);
   frameRate(FPS);
     /*document.addEventListener('mousemove', function (e) {
     px = (e.pageX > 50) ? ((e.pageX < 430) ? e.pageX - 50 : 380) : 0;
@@ -9,8 +10,8 @@ function setup() {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 	cuchillo.draw(ctx);
   }, false);*/
-  
 
+  MUSICA.play_current();
   FRUTAS.push(createFruta());
   FRUTAS.push(createFruta());
   FRUTAS.push(createFruta());
@@ -26,17 +27,17 @@ function draw() {
       FRUTAS.splice(i, 1);
       FRUTAS.push(createFruta());
     }
-	
+
   }
-	CUCHILLO.draw();  
-  
+	CUCHILLO.draw();
+
 }
 
 function configureCanvas (canvas) {
   canvas.parent('game-holder');
   var canvasHTML = document.getElementById('defaultCanvas0');
   canvasHTML.className = 'game';
-  
+
 }
 
 function createFruta () {

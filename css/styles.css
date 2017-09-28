@@ -1,1 +1,16 @@
+html {
+  background-color: black;
+  font-family: verdana;
+}
 
+.game {
+  background-color: grey;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 7vh;
+  display: block;
+  height: 480px;
+  width: 720px;
+}

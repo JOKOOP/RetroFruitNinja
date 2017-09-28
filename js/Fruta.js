@@ -22,6 +22,18 @@ class Fruta { // No estoy muy deacuerdo con el nombre pero es absurdo hacer 2 cl
     }
   }
 
+  get_vx() {
+    return this.vx;
+  }
+
+  get_vy() {
+    return this.vy;
+  }
+
+  get_baseX(){
+    return this.baseX;
+  }
+
   draw(){
     fill(this.color);
     ellipse(this.x, this.y, this.radium, this.radium);
@@ -36,7 +48,6 @@ class Fruta { // No estoy muy deacuerdo con el nombre pero es absurdo hacer 2 cl
     if (this.y > 480) {
       this.ended = true;
     }
-    //console.log('X: ' + this.x + ' Y: ' + this.y + ' t: ' + this.time);
   }
 
   check_collision(x, y, w, h){

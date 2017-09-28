@@ -4,23 +4,24 @@ WIDTH = 100
 class Cuchillo {
 
   constructor (){
+    this.x = mouseX;
     this.y = 440;
     this.height = HEIGHT;
     this.width = WIDTH;
   }
 
   draw(){
-	var x = 0;
+    this.x = 0;
     fill('#ADADAD');
-	if(mouseX <= this.width/2){
-		x = 0;
-	}else if(mouseX >= CANVAS_WIDTH - this.width/2){
-		x= CANVAS_WIDTH - this.width;
-	}else{
-		x= mouseX-this.width/2;
-	}
-	rect(x, this.y, this.width, this.height);
-	
+    if(mouseX <= this.width/2){
+      this.x = 0;
+    }else if(mouseX >= CANVAS_WIDTH - this.width/2){
+      this.x= CANVAS_WIDTH - this.width;
+    }else{
+      this.x= mouseX-this.width/2;
+    }
+    rect(this.x, this.y, this.width, this.height);
+    
   }
 
   move(){

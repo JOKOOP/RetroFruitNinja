@@ -6,3 +6,32 @@ function makeFall(posX0, vX, t, posY0, vY0) {
   var time = t + OFFSET;
   return [x, y, time];
 }
+
+function createFruta () {
+  FRUTAS = [ ];
+  for (var i = NUMBOLAS; i > 0; i--){
+    var x = Math.floor((Math.random() * 520) + 100);
+    var vx = Math.floor((Math.random() * 21) - 10);
+    var vy = Math.floor((Math.random() * (VY_MAX - VY_MIN + 1)) + VY_MIN);
+    var bomb = (Math.random() > HARDNESS) ? true : false;
+    
+    var fruta = new Fruta(x, CANVAS_HEIGHT, vx, vy, bomb);
+    if (isValidX(fruta)){
+      FRUTAS.push(fruta);
+    } else {
+      i++;
+    }
+  }
+  console.log(FRUTAS);
+}
+
+function fallTime (vy0) {
+  var t = (vy0 / (VY_KTE * G)) * -1;
+  return t;
+}
+
+function isValidX(fruta) {
+  var t = fallTime(fruta.get_vy());
+  var x = fruta.get_baseX() + (fruta.get_vx() * t);
+  return (x < 720 - RADIUM && x > 0 + RADIUM);
+}

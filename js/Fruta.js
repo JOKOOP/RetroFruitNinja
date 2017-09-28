@@ -18,8 +18,20 @@ class Fruta { // No estoy muy deacuerdo con el nombre pero es absurdo hacer 2 cl
     if(this.bomba){
       return '#000000';
     }else{
-      return '#EF10A0';
+      return '#EAA014';
     }
+  }
+
+  get_vx() {
+    return this.vx;
+  }
+
+  get_vy() {
+    return this.vy;
+  }
+
+  get_baseX(){
+    return this.baseX;
   }
 
   draw(){
@@ -36,7 +48,6 @@ class Fruta { // No estoy muy deacuerdo con el nombre pero es absurdo hacer 2 cl
     if (this.y > 480) {
       this.ended = true;
     }
-    //console.log('X: ' + this.x + ' Y: ' + this.y + ' t: ' + this.time);
   }
 
   check_collision(x, y, w, h){

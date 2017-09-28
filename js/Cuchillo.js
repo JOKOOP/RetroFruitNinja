@@ -1,4 +1,4 @@
-HEIGHT = 20
+HEIGHT = 35
 WIDTH = 100
 
 class Cuchillo {
@@ -8,6 +8,7 @@ class Cuchillo {
     this.y = 440;
     this.height = HEIGHT;
     this.width = WIDTH;
+    this.la_faca = loadImage("./media/Cuchillo.png");
   }
 
   draw(){
@@ -21,16 +22,13 @@ class Cuchillo {
       this.x= mouseX-this.width/2;
     }
     rect(this.x, this.y, this.width, this.height);
-    
   }
 
-  move(){
+  move() {
     // Mover a x,y ?
   }
 
-  check_collision(){
+  check_collision() {
 
   }
-
-
 }

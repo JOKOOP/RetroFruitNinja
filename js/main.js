@@ -1,9 +1,9 @@
 function setup() {
   var canvas = createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
-  
+
   CUCHILLO = new Cuchillo();
   MUSICA = new Musica();
-  
+
   configureCanvas(canvas);
   frameRate(FPS);
 
@@ -28,7 +28,7 @@ function draw() {
     setTimeout(function(){ createFruta();}, 800);
   }
 
-	CUCHILLO.draw();  
+	CUCHILLO.draw();
 
   if (ZIKLO === 5) {
     zaildu();
@@ -39,7 +39,7 @@ function draw() {
 function zaildu () {
   NUMBOLAS++;
   OFFSET += 0.05;
-  MUSICA.next_song();
+  MUSICA.play_next();
 }
 
 function configureCanvas (canvas) {

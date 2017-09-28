@@ -1,4 +1,7 @@
-SONGS = ["clint.mp3", "morty.mp3", "gas.mp3"];
+LEVEL_SONGS = ["radioactive.mp3", "gas.mp3", "90s.mp3"];
+SUCC_SONG = "ff.mp3";
+OVER_SONG = "morty.mp3";
+MENU_SONG = "ozzy.mp3"
 
 class Musica {
 
@@ -7,7 +10,7 @@ class Musica {
   }
 
   play_current(){
-    this.audio = new Audio("./audio/"+SONGS[this.cur_song]);
+    this.audio = new Audio("./audio/"+LEVEL_SONGS[this.cur_song]);
     this.audio.addEventListener('ended', function() {
     this.currentTime = 0;
     this.play();
@@ -15,25 +18,45 @@ class Musica {
     this.audio.play();
   }
 
-  pause_song(){
-    this.audio.pause();
-  }
-
-  next_song(){
+  play_next(){
     this.audio.pause();
     this.cur_song += 1;
-    if (this.cur_song >= SONGS.length){
+    if (this.cur_song >= LEVEL_SONGS.length){
       this.cur_song = 0;
     }
     this.play_current();
   }
 
-  play_song(s){
-    this.audio.pause();
+  set_current(s){
     this.cur_song = s;
-    if (this.cur_song >= SONGS.length){
+    if (this.cur_song >= LEVEL_SONGS.length){
       this.cur_song = 0;
     }
-    this.play_current();
+  }
+
+  play_succ_song(){
+    if (this.audio)
+      this.audio.pause();
+    this.audio(new Audio("./audio/"+SUCC_SONG));
+    this.audio.play();
+  }
+
+  play_over_song(){
+    if (this.audio)
+      this.audio.pause();
+    this.audio(new Audio("./audio/"+OVER_SONG));
+    this.audio.play();
+  }
+
+  play_menu_song(){
+    if (this.audio)
+      this.audio.pause();
+
+    this.audio(new Audio("./audio/"+MENU_SONG));
+    this.audio.addEventListener('ended', function() {
+    this.currentTime = 0;
+    this.play();
+    }, false);
+    this.audio.play();
   }
 }

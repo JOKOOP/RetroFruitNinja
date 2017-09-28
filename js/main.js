@@ -1,14 +1,15 @@
 function setup() {
   var canvas = createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
-  
+
   CUCHILLO = new Cuchillo();
-  //MUSICA = new Musica();
-  
+
+  MUSICA = new Musica();
+
   configureCanvas(canvas);
   frameRate(FPS);
 
   createFruta();
-  //MUSICA.play_current();
+  MUSICA.play_current();
 }
 
 function draw() {
@@ -37,7 +38,8 @@ function draw() {
     setTimeout(function(){ createFruta();}, 800);
   }
 
-    CUCHILLO.draw();  
+	CUCHILLO.draw();
+
 
   if (ZIKLO === 5 * ZAILTASUNA) {
     if(ZAILTASUNA === 3) {
@@ -52,7 +54,7 @@ function zaildu () {
   NUMBOLAS++;
   OFFSET += 0.05;
   ZAILTASUNA++;
-  //MUSICA.next_song();
+  MUSICA.play_next();
 }
 
 function configureCanvas (canvas) {

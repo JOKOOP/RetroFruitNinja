@@ -1,30 +1,44 @@
 function setup() {
   var canvas = createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
+
   CUCHILLO = new Cuchillo();
-  configureCanvas(canvas);  
+  MUSICA = new Musica();
+
+  configureCanvas(canvas);
   frameRate(FPS);
 
   createFruta();
+  MUSICA.play_current();
 }
 
 function draw() {
   clear();
   var reset = true;
+  var colision = false;
   for (var i = FRUTAS.length - 1; i >= 0; i--) {
     FRUTAS[i].move();
     FRUTAS[i].draw();
-    if (!FRUTAS[i].has_ended()){
-      reset = false;
+    colision = FRUTAS[i].check_collision(FRUTAS[i].x, FRUTAS[i].y, FRUTAS[i].radium);
+
+    if(FRUTAS[i]){
+      if (!FRUTAS[i].has_ended()){
+        reset = false;
+      }
+    }
+    if(colision){
+
+      FRUTAS.splice(i, 1);
     }
   }
 
-  if (reset && FRUTAS != false) {
+  if (reset && FRUTAS !== false) {
     FRUTAS = false;
     ZIKLO++;
     setTimeout(function(){ createFruta();}, 800);
   }
 
-	CUCHILLO.draw();  
+	CUCHILLO.draw();
+
 
   if (ZIKLO === 5) {
     zaildu();
@@ -35,6 +49,7 @@ function draw() {
 function zaildu () {
   NUMBOLAS++;
   OFFSET += 0.05;
+  MUSICA.play_next();
 }
 
 function configureCanvas (canvas) {

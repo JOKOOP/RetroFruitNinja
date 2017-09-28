@@ -1,3 +1,5 @@
+BUFFER = []
+
 function makeFall(posX0, vX, t, posY0, vY0) {
   /* x = x0 + (vx * t) */
   var x = posX0 + (vX * t);
@@ -17,12 +19,17 @@ function createFruta () {
     
     var fruta = new Fruta(x, CANVAS_HEIGHT, vx, vy, bomb);
     if (isValidX(fruta)){
-      FRUTAS.push(fruta);
+      BUFFER.push(fruta);
+      setTimeout(function(){añadirFruta ();}, 250 * (NUMBOLAS - i));
     } else {
       i++;
     }
   }
-  console.log(FRUTAS);
+}
+
+function añadirFruta (x, y, vx, vy, bomb) {
+  FRUTAS.push(BUFFER[0]);
+  BUFFER.splice(0, 1);
 }
 
 function fallTime (vy0) {

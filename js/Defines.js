@@ -28,13 +28,14 @@ VY_MAX = -95
 VY_MIN = -75
 
 /* Marrazteko radioa */
-RADIUM = 20;
+RADIUM = 45;
 
 /* Bola kopurua */
 NUMBOLAS = 3;
 
 /* Zailtasuna */
 HARDNESS = 0.85;
+ZAILTASUNA = 1;
 
 /* Ziklo kopurua */
 ZIKLO = 0;

@@ -2,6 +2,7 @@ function setup() {
   var canvas = createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
 
   CUCHILLO = new Cuchillo();
+
   MUSICA = new Musica();
 
   configureCanvas(canvas);
@@ -40,7 +41,10 @@ function draw() {
 	CUCHILLO.draw();
 
 
-  if (ZIKLO === 5) {
+  if (ZIKLO === 5 * ZAILTASUNA) {
+    if(ZAILTASUNA === 3) {
+      //you win!!
+    }
     zaildu();
     ZIKLO = 0;
   }
@@ -49,6 +53,7 @@ function draw() {
 function zaildu () {
   NUMBOLAS++;
   OFFSET += 0.05;
+  ZAILTASUNA++;
   MUSICA.play_next();
 }
 

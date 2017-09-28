@@ -1,10 +1,14 @@
 function setup() {
   var canvas = createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
+  
   CUCHILLO = new Cuchillo();
-  configureCanvas(canvas);  
+  MUSICA = new Musica();
+  
+  configureCanvas(canvas);
   frameRate(FPS);
 
   createFruta();
+  MUSICA.play_current();
 }
 
 function draw() {
@@ -35,6 +39,7 @@ function draw() {
 function zaildu () {
   NUMBOLAS++;
   OFFSET += 0.05;
+  MUSICA.next_song();
 }
 
 function configureCanvas (canvas) {

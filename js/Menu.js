@@ -13,7 +13,7 @@ class Menu {
     if (mouseIsPressed){
       if(mouseButton == LEFT){
         if(mouseX > 314 && mouseX < 406 && mouseY > 173 && mouseY < 200){ //jugar
-          alert("let's play yo");
+          this.state = "juego";
         }else if (mouseX > 293 && mouseX < 425 && mouseY > 207 && mouseY < 234) { // opciones
           this.state = "opciones";
         }else if (mouseX > 293 && mouseX < 425 && mouseY > 241 && mouseY < 270) { // ranking

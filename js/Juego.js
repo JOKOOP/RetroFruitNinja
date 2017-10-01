@@ -3,11 +3,16 @@ class Juego{
   constructor(){
     this.cuchillo = new Cuchillo();
     this.musica = new Musica();
+    this.state = "playing";
   }
 
   setup(){
     createFruta();
     this.musica.play_current();
+  }
+
+  end(){
+    this.musica.pause();
   }
 
   draw(){
@@ -35,9 +40,12 @@ class Juego{
       setTimeout(function(){ createFruta();}, 800);
     }
 
-  	this.cuchillo.draw();
+    this.cuchillo.draw();
 
-    if (ZIKLO === 5) {
+    if (ZIKLO == 5 * ZAILTASUNA) {
+      if(ZAILTASUNA == 3) {
+        this.state = "win";
+      }
       this.zaildu();
       ZIKLO = 0;
     }

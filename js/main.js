@@ -1,16 +1,18 @@
 function setup() {
   var canvas = createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
 
-  CUCHILLO = new Cuchillo();
-  MUSICA = new Musica();
+  //CUCHILLO = new Cuchillo();
+  //MUSICA = new Musica();
 
-  configureCanvas(canvas);
-  frameRate(FPS);
+  //configureCanvas(canvas);
+  //frameRate(FPS);
 
-  createFruta();
-  MUSICA.play_current();
+  MENU = new Menu(canvas);
+
+  //createFruta();
+  //MUSICA.play_current();
 }
-
+/*
 function draw() {
   clear();
   var reset = true;
@@ -50,7 +52,7 @@ function zaildu () {
   NUMBOLAS++;
   OFFSET += 0.05;
   MUSICA.play_next();
-}
+}*/
 
 function configureCanvas (canvas) {
   canvas.parent('game-holder');

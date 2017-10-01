@@ -2,11 +2,11 @@ class Menu {
 
   constructor(canvas){
     this.canvas = canvas;
-    set_up();
+    this.setup();
   }
 
-  set_up(){
-
+  setup(){
+    var img = loadImage("./media/menu/menu_nagusia.png");
+    image(img, 0, 0);
   }
-
 }

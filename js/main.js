@@ -21,15 +21,14 @@ function draw() {
   }else if(state == "juego"){
     JUEGO.draw();
     if (JUEGO.state == "win"){
-      alert("win!");
       state = "menu";
       JUEGO.end();
-      MENU.setup();
+      MENU.setwin();
     }else if(JUEGO.state == "lose"){
       alert("lose!");
       state = "menu";
       JUEGO.end();
-      MENU.setup();
+      MENU.setover();
     }
   }
 }

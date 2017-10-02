@@ -18,6 +18,11 @@ class Musica {
     this.audio.play();
   }
 
+  play_first(){
+    this.cur_song = 0;
+    this.play_current();
+  }
+
   pause(){
     this.audio.pause();
   }
@@ -49,6 +54,10 @@ class Musica {
     if (this.audio)
       this.audio.pause();
     this.audio = new Audio("./audio/"+OVER_SONG);
+    this.audio.addEventListener('ended', function() {
+    this.currentTime = 0;
+    this.play();
+    }, false);
     this.audio.play();
   }
 

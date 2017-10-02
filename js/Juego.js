@@ -3,12 +3,17 @@ class Juego{
   constructor(){
     this.cuchillo = new Cuchillo();
     this.musica = new Musica();
-    this.state = "playing";
   }
 
   setup(){
+    this.musica.play_first();
+    this.ziklo = 0;
+    this.state = "playing";
+    this.zailtasuna = 1;
+    NUMBOLAS = 3;
+    FRUTAS = [];
+    OFFSET = 0.12;
     createFruta();
-    this.musica.play_current();
   }
 
   end(){
@@ -36,24 +41,25 @@ class Juego{
 
     if (reset && FRUTAS !== false) {
       FRUTAS = false;
-      ZIKLO++;
+      this.ziklo++;
       setTimeout(function(){ createFruta();}, 800);
     }
 
     this.cuchillo.draw();
 
-    if (ZIKLO == 5 * ZAILTASUNA) {
-      if(ZAILTASUNA == 3) {
+    if (this.ziklo == 5) {
+      this.zailtasuna++;
+      if(this.zailtasuna > 3) {
         this.state = "win";
       }
       this.zaildu();
-      ZIKLO = 0;
+      this.ziklo = 0;
     }
   }
 
   zaildu(){
     NUMBOLAS++;
-    OFFSET += 0.05;
+    OFFSET += 0.02;
     this.musica.play_next();
   }
 }

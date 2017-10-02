@@ -10,8 +10,31 @@ class Menu {
     this.musica.play_menu_song();
   }
 
+  setover(){
+    this.state = "over";
+    this.img = loadImage("./media/state/game_over.png");
+    this.musica.play_over_song();
+  }
+
+  setwin(){
+    this.state = "win";
+    this.img = loadImage("./media/state/success.png");
+    this.musica.play_succ_song();
+  }
+
   end(){
     this.musica.pause();
+  }
+
+  over_mouse(){
+    if(mouseIsPressed){
+      if(mouseButton == LEFT){
+        if(mouseX > 245 && mouseX < 500 && mouseY > 383 && mouseY < 420){ //volver
+          this.state = "root";
+          this.musica.play_menu_song();
+        }
+      }
+    }
   }
 
   root_mouse(){
@@ -78,6 +101,14 @@ class Menu {
       case "instrucciones":
         this.img = loadImage("./media/menu/Instrucciones.png");
         this.inst_mouse();
+        break;
+      case "over":
+        this.img = loadImage("./media/state/game_over.png");
+        this.over_mouse();
+        break;
+      case "win":
+        this.img = loadImage("./media/state/game_over.png");
+        this.over_mouse();
         break;
       default:
         break;

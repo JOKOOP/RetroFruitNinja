@@ -3,13 +3,17 @@ class Juego{
   constructor(){
     CUCHILLO = new Cuchillo();
     this.musica = new Musica();
+    this.backgrounds = ["./media/Pantalla1.png", "./media/Pantalla2.png", "./media/Pantalla1.png"];
+    this.image = loadImage(this.backgrounds[0]);
   }
 
   setup(){
     this.musica.play_first();
+    this.image = loadImage(this.backgrounds[0]);
     this.ziklo = 0;
     this.state = "playing";
     this.zailtasuna = 1;
+    VIDAS = POS_VIDAS.length;
     NUMBOLAS = 3;
     FRUTAS = [];
     OFFSET = 0.12;
@@ -24,6 +28,7 @@ class Juego{
     clear();
     var reset = true;
     var colision = false;
+    image(this.image, 0, 0);
     drawVidas();
     for (var i = FRUTAS.length - 1; i >= 0; i--) {
       FRUTAS[i].move();
@@ -48,12 +53,13 @@ class Juego{
 
     CUCHILLO.draw();
 
-    if(VIDAS.length == 0){
+    if(VIDAS == 0){
       this.state = "lose";
     }
 
     if (this.ziklo == 5) {
       this.zailtasuna++;
+      this.image = loadImage(this.backgrounds[this.zailtasuna-1]);
       if(this.zailtasuna > 3) {
         this.state = "win";
       }

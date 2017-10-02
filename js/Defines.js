@@ -41,7 +41,7 @@ ZAILTASUNA = 1;
 ZIKLO = 0;
 
 /* Bida kopurua */
- VIDAS = [
+ POS_VIDAS = [
  {
     "posX": "690",
     "posY": "450"
@@ -55,3 +55,5 @@ ZIKLO = 0;
     "posY": "450"
  }
  ];
+
+ VIDAS = POS_VIDAS.length;

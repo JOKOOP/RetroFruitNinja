@@ -43,8 +43,7 @@ function createGameOverBackground(){
 }
 
 function drawVidas(){
-  for (var j = VIDAS.length - 1; j >= 0; j--) {
+  for (var j = VIDAS - 1; j >= 0; j--) {
   image(loadImage("./media/Corazon.gif", 500, 250, 20, 20));
   }
-
 }

@@ -43,15 +43,15 @@ ZIKLO = 0;
 /* Bida kopurua */
 POS_VIDAS = [{
         "posX": "690",
-        "posY": "450"
+        "posY": "20"
     },
     {
         "posX": "665",
-        "posY": "450"
+        "posY": "20"
     },
     {
         "posX": "640",
-        "posY": "450"
+        "posY": "20"
     }
 ];
 

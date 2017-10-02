@@ -5,6 +5,7 @@ class Juego{
     this.musica = new Musica();
     this.backgrounds = ["./media/Pantalla1.png", "./media/Pantalla2.png", "./media/Pantalla1.png"];
     this.image = loadImage(this.backgrounds[0]);
+    this.bidak = loadImage("./media/Corazon.gif");
   }
 
   setup(){
@@ -25,10 +26,8 @@ class Juego{
   }
 
   drawVidas(){
-    var img = loadImage("./media/Corazon.gif");
-    image(img, POS_VIDAS[0].posX, POS_VIDAS[0].posY, 20, 20);
-    for (var j = VIDAS - 1; j >= 0; j--) {
-      //image(img, POS_VIDAS[j].posX, POS_VIDAS[j].posY, 20, 20);
+    for (var i = VIDAS - 1; i >= 0; i--) {
+      image(this.bidak, POS_VIDAS[i].posX, POS_VIDAS[i].posY, 20, 20);
     }
   }
 

@@ -19,6 +19,7 @@ function draw() {
       JUEGO.setup();
     }
   }else if(state == "juego"){
+    drawVidas();
     JUEGO.draw();
     if (JUEGO.state == "win"){
       state = "menu";
@@ -37,4 +38,15 @@ function configureCanvas (canvas) {
   canvas.parent('game-holder');
   var canvasHTML = document.getElementById('defaultCanvas0');
   canvasHTML.className = 'game';
+}
+
+function createGameOverBackground(){
+  //image(loadImage("./media/Cuchillo.png");, this.x, this.y, this.width, this.height);
+}
+
+function drawVidas(){
+  for (var j = VIDAS.length - 1; j >= 0; j--) {
+  image(loadImage("./media/Corazon.gif", 500, 250, 20, 20));
+  }
+    
 }

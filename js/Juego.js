@@ -24,12 +24,19 @@ class Juego{
     this.musica.pause();
   }
 
+  drawVidas(){
+    var img = loadImage("./media/Corazon.gif");
+    image(img, POS_VIDAS[0].posX, POS_VIDAS[0].posY, 20, 20);
+    for (var j = VIDAS - 1; j >= 0; j--) {
+      //image(img, POS_VIDAS[j].posX, POS_VIDAS[j].posY, 20, 20);
+    }
+  }
+
   draw(){
     clear();
     var reset = true;
     var colision = false;
     image(this.image, 0, 0);
-    drawVidas();
     for (var i = FRUTAS.length - 1; i >= 0; i--) {
       FRUTAS[i].move();
       FRUTAS[i].draw();
@@ -52,6 +59,7 @@ class Juego{
     }
 
     CUCHILLO.draw();
+    this.drawVidas();
 
     if(VIDAS == 0){
       this.state = "lose";
@@ -59,9 +67,11 @@ class Juego{
 
     if (this.ziklo == 5) {
       this.zailtasuna++;
-      this.image = loadImage(this.backgrounds[this.zailtasuna-1]);
+
       if(this.zailtasuna > 3) {
         this.state = "win";
+      }else{
+        this.image = loadImage(this.backgrounds[this.zailtasuna-1]);  
       }
       this.zaildu();
       this.ziklo = 0;

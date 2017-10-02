@@ -25,7 +25,6 @@ function draw() {
       JUEGO.end();
       MENU.setwin();
     }else if(JUEGO.state == "lose"){
-      alert("lose!");
       state = "menu";
       JUEGO.end();
       MENU.setover();

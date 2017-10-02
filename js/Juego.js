@@ -1,7 +1,7 @@
 class Juego{
 
   constructor(){
-    this.cuchillo = new Cuchillo();
+    CUCHILLO = new Cuchillo();
     this.musica = new Musica();
   }
 
@@ -46,10 +46,10 @@ class Juego{
       setTimeout(function(){ createFruta();}, 800);
     }
 
-    this.cuchillo.draw();
+    CUCHILLO.draw();
 
     if(VIDAS.length == 0){
-      this.state = "over";
+      this.state = "lose";
     }
 
     if (this.ziklo == 5) {

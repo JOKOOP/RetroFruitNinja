@@ -9,6 +9,22 @@ function makeFall(posX0, vX, t, posY0, vY0) {
   return [x, y, time];
 }
 
+function get_vy_t (vy0, t) {
+  var vy = vy0 + G * t
+  return vy;
+}
+
+function fallTime (vy0) {
+  var t = (vy0 / (VY_KTE * G)) * -1;
+  return t;
+}
+
+function isValidX(fruta) {
+  var t = fallTime(fruta.get_vy());
+  var x = fruta.get_baseX() + (fruta.get_vx() * t);
+  return (x < 720 - RADIUM && x > 0 + RADIUM);
+}
+
 function createFruta () {
   for (var i = NUMBOLAS; i > 0; i--){
     var x = Math.floor((Math.random() * 520) + 100);
@@ -32,15 +48,4 @@ function añadirFruta (x, y, vx, vy, bomb) {
   }
   FRUTAS.push(BUFFER[0]);
   BUFFER.splice(0, 1);
-}
-
-function fallTime (vy0) {
-  var t = (vy0 / (VY_KTE * G)) * -1;
-  return t;
-}
-
-function isValidX(fruta) {
-  var t = fallTime(fruta.get_vy());
-  var x = fruta.get_baseX() + (fruta.get_vx() * t);
-  return (x < 720 - RADIUM && x > 0 + RADIUM);
 }

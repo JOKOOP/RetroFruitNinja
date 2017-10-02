@@ -33,7 +33,7 @@ class Juego{
     for (var i = FRUTAS.length - 1; i >= 0; i--) {
       FRUTAS[i].move();
       FRUTAS[i].draw();
-      colision = FRUTAS[i].check_collision(FRUTAS[i].x, FRUTAS[i].y, FRUTAS[i].radium);
+      colision = FRUTAS[i].check_collision(FRUTAS[i].x, FRUTAS[i].y, FRUTAS[i].radium, FRUTAS[i].get_vy());
 
       if(FRUTAS[i]){
         if (!FRUTAS[i].has_ended()){

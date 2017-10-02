@@ -1,11 +1,11 @@
 /* Arraya >< ·> */
-FRUTAS = [ ];
+FRUTAS = [];
 
- /* Variable de cuchilllo */
-CUCHILLO = [ ];
+/* Variable de cuchilllo */
+CUCHILLO = [];
 
 /* Variable de musica */
-MUSICA = [ ];
+MUSICA = [];
 
 /* Dimentsioak */
 CANVAS_WIDTH = 720;
@@ -41,19 +41,18 @@ ZAILTASUNA = 1;
 ZIKLO = 0;
 
 /* Bida kopurua */
- POS_VIDAS = [
- {
-    "posX": "690",
-    "posY": "450"
- },
- {
-    "posX": "665",
-    "posY": "450"
- },
- {
-    "posX": "640",
-    "posY": "450"
- }
- ];
+POS_VIDAS = [{
+        "posX": "690",
+        "posY": "450"
+    },
+    {
+        "posX": "665",
+        "posY": "450"
+    },
+    {
+        "posX": "640",
+        "posY": "450"
+    }
+];
 
- VIDAS = POS_VIDAS.length;
+VIDAS = POS_VIDAS.length;

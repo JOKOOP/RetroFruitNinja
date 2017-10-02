@@ -19,7 +19,6 @@ function draw() {
       JUEGO.setup();
     }
   }else if(state == "juego"){
-    drawVidas();
     JUEGO.draw();
     if (JUEGO.state == "win"){
       state = "menu";
@@ -48,5 +47,5 @@ function drawVidas(){
   for (var j = VIDAS.length - 1; j >= 0; j--) {
   image(loadImage("./media/Corazon.gif", 500, 250, 20, 20));
   }
-    
+
 }

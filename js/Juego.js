@@ -24,6 +24,7 @@ class Juego{
     clear();
     var reset = true;
     var colision = false;
+    drawVidas();
     for (var i = FRUTAS.length - 1; i >= 0; i--) {
       FRUTAS[i].move();
       FRUTAS[i].draw();
@@ -46,6 +47,10 @@ class Juego{
     }
 
     this.cuchillo.draw();
+
+    if(VIDAS.length == 0){
+      this.state = "over";
+    }
 
     if (this.ziklo == 5) {
       this.zailtasuna++;

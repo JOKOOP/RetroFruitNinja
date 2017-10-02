@@ -1,12 +1,17 @@
 class Menu {
 
   constructor(){
-    this.setup();
+    this.musica = new Musica();
   }
 
   setup(){
     this.state = "root";
     this.img = loadImage("./media/menu/menu_nagusia.png");
+    this.musica.play_menu_song();
+  }
+
+  end(){
+    this.musica.pause();
   }
 
   root_mouse(){

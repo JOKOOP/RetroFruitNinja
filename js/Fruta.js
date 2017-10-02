@@ -37,7 +37,7 @@ class Fruta { // No estoy muy deacuerdo con el nombre pero es absurdo hacer 2 cl
 
   draw(){
     this.vym = get_vy_t(this.vy, this.time);
-    this.radium = (this.vym < 0) ? RADIUM/1.25 : RADIUM;
+    //this.radium = (this.vym < 0) ? RADIUM/1.25 : RADIUM;
     image(this.color, this.x, this.y, this.radium, this.radium);
   }
 

@@ -72,15 +72,27 @@ class Menu {
     }
   }
 
-  root_mouse_hover(){
-    
-  }
-
   opciones_mouse(){
     if(mouseIsPressed){
       if(mouseButton == LEFT){
         if(mouseX > 300 && mouseX < 419 && mouseY > 393 && mouseY < 440){ //volver
           this.state = "root";
+        }
+        /*
+        if(mouseX > 300 && mouseX < 419 && mouseY > 393 && mouseY < 440){ //sound
+          this.state = "root";
+        }
+        if(mouseX > 300 && mouseX < 419 && mouseY > 393 && mouseY < 440){ //sound
+          this.state = "root";
+        }
+        */
+        if(mouseX > 420 && mouseX < 435 && mouseY > 245 && mouseY < 264){ //cushi
+          console.log("cuxiyo cambiao a 1")
+          CUCHILLO.la_faca = loadImage("./media/Cuchillo.png");
+        }
+        if(mouseX > 475 && mouseX < 490 && mouseY > 245 && mouseY < 264){ //cushi
+          console.log("cuxiyo cambiao a 2")
+          CUCHILLO.la_faca = loadImage("./media/Cuchillo 2.png");
         }
       }
     }

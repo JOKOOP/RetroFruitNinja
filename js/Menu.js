@@ -16,23 +16,41 @@ class Menu {
   }
 
   root_mouse(){
-    if (mouseIsPressed){
-      if(mouseButton == LEFT){
-        if(mouseX > 314 && mouseX < 406 && mouseY > 173 && mouseY < 200){ //jugar
+    if(mouseX > 314 && mouseX < 406 && mouseY > 173 && mouseY < 200){ //jugar
+      if (mouseIsPressed){
+        if(mouseButton == LEFT){
           this.state = "juego";
-          this.resaltatu = [loadImage("./media/menu/juego_inv.png"), 0, 0];
-        }else if (mouseX > 293 && mouseX < 425 && mouseY > 207 && mouseY < 234) { // opciones
-          this.state = "opciones";
-          this.resaltatu = [loadImage("./media/menu/opciones_inv.png"), 0, 0];
-        }else if (mouseX > 293 && mouseX < 425 && mouseY > 241 && mouseY < 270) { // ranking
-          this.state = "ranking";
-          this.resaltatu = [loadImage("./media/menu/ranking_inv.png"), 0, 0];
-        }else if (mouseX > 254 && mouseX < 466 && mouseY > 279 && mouseY < 310) { // instrucciones
-          this.state = "instrucciones";
-          this.resaltatu = [loadImage("./media/menu/instrucciones_inv.png"), 0, 0];
         }
       }
+      this.resaltatu = [loadImage("./media/menu/juego_inv.png"), 0, 0];
+    }else if (mouseX > 293 && mouseX < 425 && mouseY > 207 && mouseY < 234) { // opciones
+      if (mouseIsPressed){
+        if(mouseButton == LEFT){
+          this.state = "opciones";
+        }
+      }
+      this.resaltatu = [loadImage("./media/menu/opciones_inv.png"), 0, 0];
+    }else if (mouseX > 293 && mouseX < 425 && mouseY > 241 && mouseY < 270) { // ranking
+      if (mouseIsPressed){
+        if(mouseButton == LEFT){
+          this.state = "ranking";
+        }
+      }
+      this.resaltatu = [loadImage("./media/menu/ranking_inv.png"), 0, 0];
+    }else if (mouseX > 254 && mouseX < 466 && mouseY > 279 && mouseY < 310) { // instrucciones
+      if (mouseIsPressed){
+        if(mouseButton == LEFT){
+          this.state = "instrucciones";
+        }
+      }
+      this.resaltatu = [loadImage("./media/menu/instrucciones_inv.png"), 0, 0];
+    }else{
+      this.resaltatu = [];
     }
+  }
+
+  root_mouse_hover(){
+    
   }
 
   opciones_mouse(){
@@ -67,9 +85,13 @@ class Menu {
 
   draw(){
     image(this.img, 0, 0);
+
     switch (this.state) {
       case "root":
         this.img = loadImage("./media/menu/menu_nagusia.png");
+        if (this.resaltatu.length > 0) {
+          image(this.resaltatu[0], this.resaltatu[1], this.resaltatu[2]);
+        }
         this.root_mouse();
         break;
       case "opciones":

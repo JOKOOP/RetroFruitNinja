@@ -10,7 +10,6 @@ function makeFall(posX0, vX, t, posY0, vY0) {
 }
 
 function createFruta () {
-  FRUTAS = [ ];
   for (var i = NUMBOLAS; i > 0; i--){
     var x = Math.floor((Math.random() * 520) + 100);
     var vx = Math.floor((Math.random() * 21) - 10);
@@ -28,6 +27,9 @@ function createFruta () {
 }
 
 function añadirFruta (x, y, vx, vy, bomb) {
+  if (FRUTAS === false) {
+    FRUTAS = [];
+  }
   FRUTAS.push(BUFFER[0]);
   BUFFER.splice(0, 1);
 }

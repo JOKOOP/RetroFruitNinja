@@ -7,6 +7,7 @@ class Menu {
   setup(){
     this.state = "root";
     this.img = loadImage("./media/menu/menu_nagusia.png");
+    this.resaltatu = "";
     this.musica.play_menu_song();
   }
 
@@ -19,12 +20,16 @@ class Menu {
       if(mouseButton == LEFT){
         if(mouseX > 314 && mouseX < 406 && mouseY > 173 && mouseY < 200){ //jugar
           this.state = "juego";
+          this.resaltatu = [loadImage("./media/menu/juego_inv.png"), 0, 0];
         }else if (mouseX > 293 && mouseX < 425 && mouseY > 207 && mouseY < 234) { // opciones
           this.state = "opciones";
+          this.resaltatu = [loadImage("./media/menu/opciones_inv.png"), 0, 0];
         }else if (mouseX > 293 && mouseX < 425 && mouseY > 241 && mouseY < 270) { // ranking
           this.state = "ranking";
+          this.resaltatu = [loadImage("./media/menu/ranking_inv.png"), 0, 0];
         }else if (mouseX > 254 && mouseX < 466 && mouseY > 279 && mouseY < 310) { // instrucciones
           this.state = "instrucciones";
+          this.resaltatu = [loadImage("./media/menu/instrucciones_inv.png"), 0, 0];
         }
       }
     }

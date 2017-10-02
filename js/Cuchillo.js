@@ -13,7 +13,6 @@ class Cuchillo {
 
   draw(){
     this.x = 0;
-    fill('#ADADAD');
     if(mouseX <= this.width/2){
       this.x = 0;
     }else if(mouseX >= CANVAS_WIDTH - this.width/2){
@@ -21,7 +20,7 @@ class Cuchillo {
     }else{
       this.x= mouseX-this.width/2;
     }
-    rect(this.x, this.y, this.width, this.height);
+    image(this.la_faca, this.x, this.y, this.width, this.height);
   }
 
   move() {

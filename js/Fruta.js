@@ -52,8 +52,13 @@ class Fruta { // No estoy muy deacuerdo con el nombre pero es absurdo hacer 2 cl
 
   check_collision(x, y, radium){
     var colision;
+    var i = 0;
     if(CUCHILLO.x < (x) && CUCHILLO.x+CUCHILLO.width > (x) && (CUCHILLO.y) < y && (CUCHILLO.y+CUCHILLO.height) > y && this.bomba){
       console.log('colision bomba');
+      VIDAS.splice(i, 1);
+      console.log(VIDAS);
+      
+      i++;
       colision = true;
     }else if(CUCHILLO.x < (x) && CUCHILLO.x+CUCHILLO.width > (x) && (CUCHILLO.y) < y && (CUCHILLO.y+CUCHILLO.height) > y && !this.bomba){
       console.log('colision fruta');

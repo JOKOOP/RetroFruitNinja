@@ -39,3 +39,19 @@ ZAILTASUNA = 1;
 
 /* Ziklo kopurua */
 ZIKLO = 0;
+
+/* Bida kopurua */
+ VIDAS = [
+ {
+    "posX": "690",
+    "posY": "450"
+ },
+ {
+    "posX": "665",
+    "posY": "450"
+ },
+ {
+    "posX": "640",
+    "posY": "450"
+ } 
+ ] 

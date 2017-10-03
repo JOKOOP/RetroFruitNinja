@@ -56,3 +56,6 @@ POS_VIDAS = [{
 ];
 
 VIDAS = POS_VIDAS.length;
+
+
+OP_MUSICA = true;

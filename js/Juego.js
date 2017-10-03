@@ -3,13 +3,14 @@ class Juego{
   constructor(){
     CUCHILLO = new Cuchillo();
     this.musica = new Musica();
-    this.backgrounds = ["./media/Pantalla1.png", "./media/Pantalla2.png", "./media/Pantalla1.png"];
+    this.backgrounds = ["./media/Pantalla1.png", "./media/Pantalla2.png", "./media/Pantalla3.png"];
     this.image = loadImage(this.backgrounds[0]);
     this.bidak = loadImage("./media/Corazon.gif");
   }
 
   setup(){
-    this.musica.play_first();
+    if(OP_MUSICA)
+      this.musica.play_first();
     this.image = loadImage(this.backgrounds[0]);
     this.ziklo = 0;
     this.state = "playing";
@@ -69,13 +70,13 @@ class Juego{
       this.state = "lose";
     }
 
-    if (this.ziklo == 5) {
+    if (this.ziklo == 2) { // Debug
       this.zailtasuna++;
 
       if(this.zailtasuna > 3) {
         this.state = "win";
       }else{
-        this.image = loadImage(this.backgrounds[this.zailtasuna-1]);  
+        this.image = loadImage(this.backgrounds[this.zailtasuna-1]);
       }
       this.zaildu();
       this.ziklo = 0;
@@ -85,6 +86,7 @@ class Juego{
   zaildu(){
     NUMBOLAS++;
     OFFSET += 0.02;
-    this.musica.play_next();
+    if(OP_MUSICA)
+      this.musica.play_next();
   }
 }

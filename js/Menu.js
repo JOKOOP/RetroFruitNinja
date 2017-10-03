@@ -8,19 +8,22 @@ class Menu {
     this.state = "root";
     this.img = loadImage("./media/menu/menu_nagusia.png");
     this.resaltatu = "";
-    this.musica.play_menu_song();
+    if(OP_MUSICA)
+      this.musica.play_menu_song();
   }
 
   setover(){
     this.state = "over";
     this.img = loadImage("./media/state/game_over.png");
-    this.musica.play_over_song();
+    if(OP_MUSICA)
+      this.musica.play_over_song();
   }
 
   setwin(){
     this.state = "win";
     this.img = loadImage("./media/state/success.png");
-    this.musica.play_succ_song();
+    if(OP_MUSICA)
+      this.musica.play_succ_song();
   }
 
   end(){
@@ -32,7 +35,8 @@ class Menu {
       if(mouseButton == LEFT){
         if(mouseX > 245 && mouseX < 500 && mouseY > 383 && mouseY < 420){ //volver
           this.state = "root";
-          this.musica.play_menu_song();
+          if (OP_MUSICA)
+            this.musica.play_menu_song();
         }
       }
     }
@@ -78,20 +82,28 @@ class Menu {
         if(mouseX > 300 && mouseX < 419 && mouseY > 393 && mouseY < 440){ //volver
           this.state = "root";
         }
-        /*
-        if(mouseX > 300 && mouseX < 419 && mouseY > 393 && mouseY < 440){ //sound
-          this.state = "root";
+
+        if(mouseX > 420 && mouseX < 435 && mouseY > 200 && mouseY < 230){ //sound
+          console.log("Musica apagada");
+          if (OP_MUSICA){
+            this.musica.pause();
+            OP_MUSICA = false;
+          }
         }
-        if(mouseX > 300 && mouseX < 419 && mouseY > 393 && mouseY < 440){ //sound
-          this.state = "root";
+        if(mouseX > 475 && mouseX < 490 && mouseY > 200 && mouseY < 230){ //sound
+          console.log("Musica encendida");
+          if (!OP_MUSICA){
+            this.musica.play_menu_song();
+            OP_MUSICA = true;
+          }
         }
-        */
+
         if(mouseX > 420 && mouseX < 435 && mouseY > 245 && mouseY < 264){ //cushi
-          console.log("cuxiyo cambiao a 1")
+          console.log("Cuchillo cambiado a 1")
           CUCHILLO.la_faca = loadImage("./media/Cuchillo.png");
         }
         if(mouseX > 475 && mouseX < 490 && mouseY > 245 && mouseY < 264){ //cushi
-          console.log("cuxiyo cambiao a 2")
+          console.log("Cuchillo cambiadoo a 2")
           CUCHILLO.la_faca = loadImage("./media/Cuchillo 2.png");
         }
       }
@@ -146,7 +158,7 @@ class Menu {
         this.over_mouse();
         break;
       case "win":
-        this.img = loadImage("./media/state/game_over.png");
+        this.img = loadImage("./media/state/success.png");
         this.over_mouse();
         break;
       default:

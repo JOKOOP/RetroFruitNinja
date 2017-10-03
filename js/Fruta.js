@@ -35,7 +35,10 @@ class Fruta { // No estoy muy deacuerdo con el nombre pero es absurdo hacer 2 cl
     return this.baseX;
   }
 
-  draw(){
+  draw(){ //else if (FRUTAS[i].has_ended() && !FRUTAS[i].bomba) {
+        //  VIDAS--;
+        //  FRUTAS.splice(i, 1);
+        //1}
     this.vym = get_vy_t(this.vy, this.time);
     //this.radium = (this.vym < 0) ? ((this.vym < -25) ? RADIUM/1.3 : RADIUM / 1.2) : ((this.vym < 25) ? RADIUM / 1.1 : RADIUM); //Haundiagoa
     image(this.color, this.x, this.y, this.radium, this.radium);

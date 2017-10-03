@@ -6,7 +6,7 @@ class Menu {
 
   setup(){
     this.state = "root";
-    this.img = loadImage("./media/menu/menu_nagusia.png");
+    this.img = IMAGES.menu_nagusia;
     this.resaltatu = "";
     if(OP_MUSICA)
       this.musica.play_menu_song();
@@ -14,14 +14,14 @@ class Menu {
 
   setover(){
     this.state = "over";
-    this.img = loadImage("./media/state/game_over.png");
+    this.img = IMAGES.game_over;
     if(OP_MUSICA)
       this.musica.play_over_song();
   }
 
   setwin(){
     this.state = "win";
-    this.img = loadImage("./media/state/success.png");
+    this.img = IMAGES.success;
     if(OP_MUSICA)
       this.musica.play_succ_song();
   }
@@ -49,28 +49,28 @@ class Menu {
           this.state = "juego";
         }
       }
-      this.resaltatu = [loadImage("./media/menu/juego_inv.png"), 0, 0];
+      this.resaltatu = [IMAGES.juego_inv, 0, 0];
     }else if (mouseX > 293 && mouseX < 425 && mouseY > 207 && mouseY < 234) { // opciones
       if (mouseIsPressed){
         if(mouseButton == LEFT){
           this.state = "opciones";
         }
       }
-      this.resaltatu = [loadImage("./media/menu/opciones_inv.png"), 0, 0];
+      this.resaltatu = [IMAGES.opciones_inv, 0, 0];
     }else if (mouseX > 293 && mouseX < 425 && mouseY > 241 && mouseY < 270) { // ranking
       if (mouseIsPressed){
         if(mouseButton == LEFT){
           this.state = "ranking";
         }
       }
-      this.resaltatu = [loadImage("./media/menu/ranking_inv.png"), 0, 0];
+      this.resaltatu = [IMAGES.ranking_inv, 0, 0];
     }else if (mouseX > 254 && mouseX < 466 && mouseY > 279 && mouseY < 310) { // instrucciones
       if (mouseIsPressed){
         if(mouseButton == LEFT){
           this.state = "instrucciones";
         }
       }
-      this.resaltatu = [loadImage("./media/menu/instrucciones_inv.png"), 0, 0];
+      this.resaltatu = [IMAGES.instrucciones_inv, 0, 0];
     }else{
       this.resaltatu = [];
     }
@@ -99,12 +99,10 @@ class Menu {
         }
 
         if(mouseX > 420 && mouseX < 435 && mouseY > 245 && mouseY < 264){ //cushi
-          console.log("Cuchillo cambiado a 1")
-          CUCHILLO.la_faca = loadImage("./media/Cuchillo.png");
+          CUCHILLO.la_faca = IMAGES.cuchillo1;
         }
         if(mouseX > 475 && mouseX < 490 && mouseY > 245 && mouseY < 264){ //cushi
-          console.log("Cuchillo cambiadoo a 2")
-          CUCHILLO.la_faca = loadImage("./media/Cuchillo 2.png");
+          CUCHILLO.la_faca = IMAGES.cuchillo1;
         }
       }
     }
@@ -131,37 +129,36 @@ class Menu {
   }
 
   draw(){
+    clear();
     image(this.img, 0, 0);
 
     switch (this.state) {
       case "root":
-        this.img = loadImage("./media/menu/menu_nagusia.png");
+        this.img = IMAGES.menu_nagusia;
         if (this.resaltatu.length > 0) {
           image(this.resaltatu[0], this.resaltatu[1], this.resaltatu[2]);
         }
         this.root_mouse();
         break;
       case "opciones":
-        this.img = loadImage("./media/menu/opciones.png");
+        this.img = IMAGES.opciones;
         this.opciones_mouse();
         break;
       case "ranking":
-        this.img = loadImage("./media/menu/ranking.png");
+        this.img = IMAGES.ranking;
         this.ranking_mouse();
         break;
       case "instrucciones":
-        this.img = loadImage("./media/menu/Instrucciones.png");
+        this.img = IMAGES.instrucciones;
         this.inst_mouse();
         break;
       case "over":
-        this.img = loadImage("./media/state/game_over.png");
+        this.img = IMAGES.game_over;
         this.over_mouse();
         break;
       case "win":
-        this.img = loadImage("./media/state/success.png");
+        this.img = IMAGES.success;
         this.over_mouse();
-        break;
-      default:
         break;
     }
   }

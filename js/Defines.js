@@ -57,5 +57,8 @@ POS_VIDAS = [{
 
 VIDAS = POS_VIDAS.length;
 
-
+/* Mute */
 OP_MUSICA = true;
+
+/* IRUDIXAK */
+IMAGES = {};

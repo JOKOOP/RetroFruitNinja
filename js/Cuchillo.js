@@ -8,7 +8,7 @@ class Cuchillo {
     this.y = 440;
     this.height = HEIGHT;
     this.width = WIDTH;
-    this.la_faca = loadImage("./media/Cuchillo.png");
+    this.la_faca = IMAGES.cuchillo1;
   }
 
   draw(){
@@ -21,13 +21,5 @@ class Cuchillo {
       this.x= mouseX-this.width/2;
     }
     image(this.la_faca, this.x, this.y, this.width, this.height);
-  }
-
-  move() {
-    // Mover a x,y ?
-  }
-
-  check_collision() {
-
   }
 }

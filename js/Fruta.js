@@ -17,9 +17,9 @@ class Fruta { // No estoy muy deacuerdo con el nombre pero es absurdo hacer 2 cl
 
   get_color(){
     if(this.bomba){0
-      return loadImage("./media/Bomba.gif"); ;
+      return IMAGES.bomba;
     }else{
-      return (Math.random() > 0.5) ? loadImage("./media/Watermelon.png") : loadImage("./media/Pineapple.png");
+      return (Math.random() > 0.5) ? IMAGES.watermelon : IMAGES.pineapple;
     }
   }
 
@@ -56,11 +56,11 @@ class Fruta { // No estoy muy deacuerdo con el nombre pero es absurdo hacer 2 cl
     var colision;
     var i = 0;
     if (this.vym > 0) {
-      if(CUCHILLO.x < this.x && CUCHILLO.x+CUCHILLO.width > this.x && (CUCHILLO.y) < this.y && (CUCHILLO.y+CUCHILLO.height) > this.y && this.bomba){
+      if(CUCHILLO.x < this.x + this.radium && CUCHILLO.x+CUCHILLO.width > this.x && (CUCHILLO.y) < this.y + this.radium && (CUCHILLO.y+CUCHILLO.height) > this.y && this.bomba){
         VIDAS--;
         i++;
         colision = true;
-      }else if(CUCHILLO.x < this.x && CUCHILLO.x+CUCHILLO.width > this.x && (CUCHILLO.y) < this.y && (CUCHILLO.y+CUCHILLO.height) > this.y && this.bomba){
+      }else if(CUCHILLO.x < this.x + this.radium && CUCHILLO.x+CUCHILLO.width > this.x && (CUCHILLO.y) < this.y + this.radium && (CUCHILLO.y+CUCHILLO.height) > this.y && !this.bomba){
         colision = true;
       }else{
         colision = false;

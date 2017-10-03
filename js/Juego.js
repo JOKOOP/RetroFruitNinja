@@ -3,15 +3,16 @@ class Juego{
   constructor(){
     CUCHILLO = new Cuchillo();
     this.musica = new Musica();
-    this.backgrounds = ["./media/Pantalla1.png", "./media/Pantalla2.png", "./media/Pantalla3.png"];
-    this.image = loadImage(this.backgrounds[0]);
-    this.bidak = loadImage("./media/Corazon.gif");
+    this.backgrounds = [IMAGES.pantalla1, IMAGES.pantalla2, IMAGES.pantalla3];
+    this.image = this.backgrounds[0];
+    this.bidak = IMAGES.corazon;
   }
 
   setup(){
-    if(OP_MUSICA)
+    if(OP_MUSICA){
       this.musica.play_first();
-    this.image = loadImage(this.backgrounds[0]);
+    }
+    this.image = this.backgrounds[0];
     this.ziklo = 0;
     this.state = "playing";
     this.zailtasuna = 1;
@@ -49,10 +50,12 @@ class Juego{
       if(FRUTAS[i]){
         if (!FRUTAS[i].has_ended()){
           reset = false;
-        } else if (FRUTAS[i].has_ended() && !FRUTAS[i].bomb) {
-          VIDAS--;
-          FRUTAS.splice(i, 1);
-        }
+        } 
+         /* Hau oso zaila da */
+        //else if (FRUTAS[i].has_ended() && !FRUTAS[i].bomba) {
+        //  VIDAS--;
+        //  FRUTAS.splice(i, 1);
+        //1}
       }
       if(colision){
         FRUTAS.splice(i, 1);
@@ -76,7 +79,7 @@ class Juego{
       if(this.zailtasuna > 3) {
         this.state = "win";
       }else{
-        this.image = loadImage(this.backgrounds[this.zailtasuna-1]);
+        this.image = this.backgrounds[this.zailtasuna-1];
       }
       this.zaildu();
       this.ziklo = 0;
@@ -85,8 +88,9 @@ class Juego{
 
   zaildu(){
     NUMBOLAS++;
-    OFFSET += 0.02;
-    if(OP_MUSICA)
+    OFFSET += 0.04;
+    if(OP_MUSICA) {
       this.musica.play_next();
+    }
   }
 }

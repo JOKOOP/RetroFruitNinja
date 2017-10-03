@@ -1,3 +1,5 @@
+BUFFER = []
+
 function makeFall(posX0, vX, t, posY0, vY0) {
   /* x = x0 + (vx * t) */
   var x = posX0 + (vX * t);
@@ -7,22 +9,9 @@ function makeFall(posX0, vX, t, posY0, vY0) {
   return [x, y, time];
 }
 
-function createFruta () {
-  FRUTAS = [ ];
-  for (var i = NUMBOLAS; i > 0; i--){
-    var x = Math.floor((Math.random() * 520) + 100);
-    var vx = Math.floor((Math.random() * 21) - 10);
-    var vy = Math.floor((Math.random() * (VY_MAX - VY_MIN + 1)) + VY_MIN);
-    var bomb = (Math.random() > HARDNESS) ? true : false;
-    
-    var fruta = new Fruta(x, CANVAS_HEIGHT, vx, vy, bomb);
-    if (isValidX(fruta)){
-      FRUTAS.push(fruta);
-    } else {
-      i++;
-    }
-  }
-  console.log(FRUTAS);
+function get_vy_t (vy0, t) {
+  var vy = vy0 + G * t
+  return vy;
 }
 
 function fallTime (vy0) {
@@ -34,4 +23,29 @@ function isValidX(fruta) {
   var t = fallTime(fruta.get_vy());
   var x = fruta.get_baseX() + (fruta.get_vx() * t);
   return (x < 720 - RADIUM && x > 0 + RADIUM);
+}
+
+function createFruta () {
+  for (var i = NUMBOLAS; i > 0; i--){
+    var x = Math.floor((Math.random() * 520) + 100);
+    var vx = Math.floor((Math.random() * 21) - 10);
+    var vy = Math.floor((Math.random() * (VY_MAX - VY_MIN + 1)) + VY_MIN);
+    var bomb = (Math.random() > HARDNESS) ? true : false;
+    
+    var fruta = new Fruta(x, CANVAS_HEIGHT, vx, vy, bomb);
+    if (isValidX(fruta)){
+      BUFFER.push(fruta);
+      setTimeout(function(){añadirFruta ();}, 250 * (NUMBOLAS - i));
+    } else {
+      i++;
+    }
+  }
+}
+
+function añadirFruta (x, y, vx, vy, bomb) {
+  if (FRUTAS === false) {
+    FRUTAS = [];
+  }
+  FRUTAS.push(BUFFER[0]);
+  BUFFER.splice(0, 1);
 }

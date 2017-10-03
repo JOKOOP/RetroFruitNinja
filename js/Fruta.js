@@ -7,6 +7,7 @@ class Fruta { // No estoy muy deacuerdo con el nombre pero es absurdo hacer 2 cl
     this.y = y;
     this.vx = vx;
     this.vy = vy;
+    this.vym = vy;
     this.radium = RADIUM;
     this.bomba = bomba; // si no es una bomba es una fruta
     this.color = this.get_color();
@@ -15,10 +16,10 @@ class Fruta { // No estoy muy deacuerdo con el nombre pero es absurdo hacer 2 cl
   }
 
   get_color(){
-    if(this.bomba){
-      return '#000000';
+    if(this.bomba){0
+      return IMAGES.bomba;
     }else{
-      return '#EAA014';
+      return (Math.random() > 0.5) ? IMAGES.watermelon : IMAGES.pineapple;
     }
   }
 
@@ -34,9 +35,13 @@ class Fruta { // No estoy muy deacuerdo con el nombre pero es absurdo hacer 2 cl
     return this.baseX;
   }
 
-  draw(){
-    fill(this.color);
-    ellipse(this.x, this.y, this.radium, this.radium);
+  draw(){ //else if (FRUTAS[i].has_ended() && !FRUTAS[i].bomba) {
+        //  VIDAS--;
+        //  FRUTAS.splice(i, 1);
+        //1}
+    this.vym = get_vy_t(this.vy, this.time);
+    //this.radium = (this.vym < 0) ? ((this.vym < -25) ? RADIUM/1.3 : RADIUM / 1.2) : ((this.vym < 25) ? RADIUM / 1.1 : RADIUM); //Haundiagoa
+    image(this.color, this.x, this.y, this.radium, this.radium);
   }
 
   move(){
@@ -45,22 +50,27 @@ class Fruta { // No estoy muy deacuerdo con el nombre pero es absurdo hacer 2 cl
     this.y = array[1];
     this.time = array[2];
 
-    if (this.y > 480) {
+    if (this.y > 480 && this.vym > 0) {
       this.ended = true;
     }
   }
 
-  check_collision(x, y, radium){
+  check_collision(){
     var colision;
-    if(CUCHILLO.x < (x) && CUCHILLO.x+CUCHILLO.width > (x) && (CUCHILLO.y) < y && (CUCHILLO.y+CUCHILLO.height) > y && this.bomba){
-      console.log('colision bomba');
-      colision = true;
-    }else if(CUCHILLO.x < (x) && CUCHILLO.x+CUCHILLO.width > (x) && (CUCHILLO.y) < y && (CUCHILLO.y+CUCHILLO.height) > y && !this.bomba){
-      console.log('colision fruta');
-      colision = true;
+    var i = 0;
+    if (this.vym > 0) {
+      if(CUCHILLO.x < this.x + this.radium && CUCHILLO.x+CUCHILLO.width > this.x && (CUCHILLO.y) < this.y + this.radium && (CUCHILLO.y+CUCHILLO.height) > this.y && this.bomba){
+        VIDAS--;
+        i++;
+        colision = true;
+      }else if(CUCHILLO.x < this.x + this.radium && CUCHILLO.x+CUCHILLO.width > this.x && (CUCHILLO.y) < this.y + this.radium && (CUCHILLO.y+CUCHILLO.height) > this.y && !this.bomba){
+        colision = true;
+      }else{
+        colision = false;
+      }
     }else{
       colision = false;
-      }
+    }
     return colision;
   }
 

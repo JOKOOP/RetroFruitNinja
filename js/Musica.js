@@ -18,6 +18,16 @@ class Musica {
     this.audio.play();
   }
 
+  play_first(){
+    this.cur_song = 0;
+    this.play_current();
+  }
+
+  pause(){
+    if(this.audio)
+      this.audio.pause();
+  }
+
   play_next(){
     this.audio.pause();
     this.cur_song += 1;
@@ -37,14 +47,18 @@ class Musica {
   play_succ_song(){
     if (this.audio)
       this.audio.pause();
-    this.audio(new Audio("./audio/"+SUCC_SONG));
+    this.audio = new Audio("./audio/"+SUCC_SONG);
     this.audio.play();
   }
 
   play_over_song(){
     if (this.audio)
       this.audio.pause();
-    this.audio(new Audio("./audio/"+OVER_SONG));
+    this.audio = new Audio("./audio/"+OVER_SONG);
+    this.audio.addEventListener('ended', function() {
+    this.currentTime = 0;
+    this.play();
+    }, false);
     this.audio.play();
   }
 
@@ -52,7 +66,7 @@ class Musica {
     if (this.audio)
       this.audio.pause();
 
-    this.audio(new Audio("./audio/"+MENU_SONG));
+    this.audio = new Audio("./audio/"+MENU_SONG);
     this.audio.addEventListener('ended', function() {
     this.currentTime = 0;
     this.play();

@@ -1,11 +1,11 @@
 /* Arraya >< ·> */
-FRUTAS = [ ];
+FRUTAS = [];
 
- /* Variable de cuchilllo */
-CUCHILLO = [ ];
+/* Variable de cuchilllo */
+CUCHILLO = [];
 
 /* Variable de musica */
-MUSICA = [ ];
+MUSICA = [];
 
 /* Dimentsioak */
 CANVAS_WIDTH = 720;
@@ -28,13 +28,37 @@ VY_MAX = -95
 VY_MIN = -75
 
 /* Marrazteko radioa */
-RADIUM = 20;
+RADIUM = 45;
 
 /* Bola kopurua */
 NUMBOLAS = 3;
 
 /* Zailtasuna */
 HARDNESS = 0.85;
+ZAILTASUNA = 1;
 
 /* Ziklo kopurua */
 ZIKLO = 0;
+
+/* Bida kopurua */
+POS_VIDAS = [{
+        "posX": "690",
+        "posY": "20"
+    },
+    {
+        "posX": "665",
+        "posY": "20"
+    },
+    {
+        "posX": "640",
+        "posY": "20"
+    }
+];
+
+VIDAS = POS_VIDAS.length;
+
+/* Mute */
+OP_MUSICA = true;
+
+/* IRUDIXAK */
+IMAGES = {};

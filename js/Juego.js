@@ -1,15 +1,21 @@
 class Juego{
 
   constructor(){
-    this.cuchillo = new Cuchillo();
+    CUCHILLO = new Cuchillo();
     this.musica = new Musica();
+    this.backgrounds = ["./media/Pantalla1.png", "./media/Pantalla2.png", "./media/Pantalla1.png"];
+    this.image = loadImage(this.backgrounds[0]);
+    this.bidak = loadImage("./media/Corazon.gif");
   }
 
   setup(){
-    this.musica.play_first();
+    if(OP_MUSICA)
+      this.musica.play_first();
+    this.image = loadImage(this.backgrounds[0]);
     this.ziklo = 0;
     this.state = "playing";
     this.zailtasuna = 1;
+    VIDAS = POS_VIDAS.length;
     NUMBOLAS = 3;
     FRUTAS = [];
     OFFSET = 0.12;
@@ -20,15 +26,21 @@ class Juego{
     this.musica.pause();
   }
 
+  drawVidas(){
+    for (var i = VIDAS - 1; i >= 0; i--) {
+      image(this.bidak, POS_VIDAS[i].posX, POS_VIDAS[i].posY, 20, 20);
+    }
+  }
+
   draw(){
     clear();
     var reset = true;
     var colision = false;
-    drawVidas();
+    image(this.image, 0, 0);
     for (var i = FRUTAS.length - 1; i >= 0; i--) {
       FRUTAS[i].move();
       FRUTAS[i].draw();
-      colision = FRUTAS[i].check_collision(FRUTAS[i].x, FRUTAS[i].y, FRUTAS[i].radium);
+      colision = FRUTAS[i].check_collision(FRUTAS[i].x, FRUTAS[i].y, FRUTAS[i].radium, FRUTAS[i].get_vy());
 
       if(FRUTAS[i]){
         if (!FRUTAS[i].has_ended()){
@@ -46,16 +58,20 @@ class Juego{
       setTimeout(function(){ createFruta();}, 800);
     }
 
-    this.cuchillo.draw();
+    CUCHILLO.draw();
+    this.drawVidas();
 
-    if(VIDAS.length == 0){
-      this.state = "over";
+    if(VIDAS == 0){
+      this.state = "lose";
     }
 
     if (this.ziklo == 5) {
       this.zailtasuna++;
+
       if(this.zailtasuna > 3) {
         this.state = "win";
+      }else{
+        this.image = loadImage(this.backgrounds[this.zailtasuna-1]);
       }
       this.zaildu();
       this.ziklo = 0;
@@ -65,6 +81,7 @@ class Juego{
   zaildu(){
     NUMBOLAS++;
     OFFSET += 0.02;
-    this.musica.play_next();
+    if(OP_MUSICA)
+      this.musica.play_next();
   }
 }

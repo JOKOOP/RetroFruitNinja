@@ -25,7 +25,6 @@ function draw() {
       JUEGO.end();
       MENU.setwin();
     }else if(JUEGO.state == "lose"){
-      alert("lose!");
       state = "menu";
       JUEGO.end();
       MENU.setover();
@@ -37,15 +36,4 @@ function configureCanvas (canvas) {
   canvas.parent('game-holder');
   var canvasHTML = document.getElementById('defaultCanvas0');
   canvasHTML.className = 'game';
-}
-
-function createGameOverBackground(){
-  //image(loadImage("./media/Cuchillo.png");, this.x, this.y, this.width, this.height);
-}
-
-function drawVidas(){
-  for (var j = VIDAS.length - 1; j >= 0; j--) {
-  image(loadImage("./media/Corazon.gif", 500, 250, 20, 20));
-  }
-
 }

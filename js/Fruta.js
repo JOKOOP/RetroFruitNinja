@@ -7,8 +7,8 @@ class Fruta { // No estoy muy deacuerdo con el nombre pero es absurdo hacer 2 cl
     this.y = y;
     this.vx = vx;
     this.vy = vy;
+    this.vym = vy;
     this.radium = RADIUM;
-    console.log(RADIUM);
     this.bomba = bomba; // si no es una bomba es una fruta
     this.color = this.get_color();
     this.time = 0;
@@ -36,6 +36,8 @@ class Fruta { // No estoy muy deacuerdo con el nombre pero es absurdo hacer 2 cl
   }
 
   draw(){
+    this.vym = get_vy_t(this.vy, this.time);
+    //this.radium = (this.vym < 0) ? RADIUM/1.25 : RADIUM;
     image(this.color, this.x, this.y, this.radium, this.radium);
   }
 
@@ -53,19 +55,22 @@ class Fruta { // No estoy muy deacuerdo con el nombre pero es absurdo hacer 2 cl
   check_collision(x, y, radium){
     var colision;
     var i = 0;
-    if(CUCHILLO.x < (x) && CUCHILLO.x+CUCHILLO.width > (x) && (CUCHILLO.y) < y && (CUCHILLO.y+CUCHILLO.height) > y && this.bomba){
-      console.log('colision bomba');
-      VIDAS.splice(i, 1);
-      console.log(VIDAS);
-      
-      i++;
-      colision = true;
-    }else if(CUCHILLO.x < (x) && CUCHILLO.x+CUCHILLO.width > (x) && (CUCHILLO.y) < y && (CUCHILLO.y+CUCHILLO.height) > y && !this.bomba){
-      console.log('colision fruta');
-      colision = true;
+    if (this.vym > 0) {
+      if(CUCHILLO.x < (x) && CUCHILLO.x+CUCHILLO.width > (x) && (CUCHILLO.y) < y && (CUCHILLO.y+CUCHILLO.height) > y && this.bomba){
+        console.log('colision bomba');
+        VIDAS--;
+        console.log(VIDAS);
+        i++;
+        colision = true;
+      }else if(CUCHILLO.x < (x) && CUCHILLO.x+CUCHILLO.width > (x) && (CUCHILLO.y) < y && (CUCHILLO.y+CUCHILLO.height) > y && !this.bomba){
+        console.log('colision fruta');
+        colision = true;
+      }else{
+        colision = false;
+      }
     }else{
       colision = false;
-      }
+    }
     return colision;
   }
 

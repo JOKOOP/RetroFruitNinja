@@ -24,7 +24,8 @@ class Musica {
   }
 
   pause(){
-    this.audio.pause();
+    if(this.audio)
+      this.audio.pause();
   }
 
   play_next(){

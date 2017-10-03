@@ -3,7 +3,7 @@ class Juego{
   constructor(){
     CUCHILLO = new Cuchillo();
     this.musica = new Musica();
-    this.backgrounds = ["./media/Pantalla1.png", "./media/Pantalla2.png", "./media/Pantalla1.png"];
+    this.backgrounds = ["./media/Pantalla1.png", "./media/Pantalla2.png", "./media/Pantalla3.png"];
     this.image = loadImage(this.backgrounds[0]);
     this.bidak = loadImage("./media/Corazon.gif");
   }
@@ -65,7 +65,7 @@ class Juego{
       this.state = "lose";
     }
 
-    if (this.ziklo == 5) {
+    if (this.ziklo == 2) { // Debug
       this.zailtasuna++;
 
       if(this.zailtasuna > 3) {

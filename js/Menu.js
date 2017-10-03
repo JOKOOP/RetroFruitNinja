@@ -158,7 +158,7 @@ class Menu {
         this.over_mouse();
         break;
       case "win":
-        this.img = loadImage("./media/state/game_over.png");
+        this.img = loadImage("./media/state/success.png");
         this.over_mouse();
         break;
       default:

@@ -37,7 +37,7 @@ class Fruta { // No estoy muy deacuerdo con el nombre pero es absurdo hacer 2 cl
 
   draw(){
     this.vym = get_vy_t(this.vy, this.time);
-    //this.radium = (this.vym < 0) ? RADIUM/1.25 : RADIUM;
+    //this.radium = (this.vym < 0) ? ((this.vym < -25) ? RADIUM/1.3 : RADIUM / 1.2) : ((this.vym < 25) ? RADIUM / 1.1 : RADIUM); //Haundiagoa
     image(this.color, this.x, this.y, this.radium, this.radium);
   }
 
@@ -47,23 +47,20 @@ class Fruta { // No estoy muy deacuerdo con el nombre pero es absurdo hacer 2 cl
     this.y = array[1];
     this.time = array[2];
 
-    if (this.y > 480) {
+    if (this.y > 480 && this.vym > 0) {
       this.ended = true;
     }
   }
 
-  check_collision(x, y, radium){
+  check_collision(){
     var colision;
     var i = 0;
     if (this.vym > 0) {
-      if(CUCHILLO.x < (x) && CUCHILLO.x+CUCHILLO.width > (x) && (CUCHILLO.y) < y && (CUCHILLO.y+CUCHILLO.height) > y && this.bomba){
-        console.log('colision bomba');
+      if(CUCHILLO.x < this.x && CUCHILLO.x+CUCHILLO.width > this.x && (CUCHILLO.y) < this.y && (CUCHILLO.y+CUCHILLO.height) > this.y && this.bomba){
         VIDAS--;
-        console.log(VIDAS);
         i++;
         colision = true;
-      }else if(CUCHILLO.x < (x) && CUCHILLO.x+CUCHILLO.width > (x) && (CUCHILLO.y) < y && (CUCHILLO.y+CUCHILLO.height) > y && !this.bomba){
-        console.log('colision fruta');
+      }else if(CUCHILLO.x < this.x && CUCHILLO.x+CUCHILLO.width > this.x && (CUCHILLO.y) < this.y && (CUCHILLO.y+CUCHILLO.height) > this.y && this.bomba){
         colision = true;
       }else{
         colision = false;

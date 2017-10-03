@@ -35,15 +35,22 @@ class Juego{
     clear();
     var reset = true;
     var colision = false;
+    
     image(this.image, 0, 0);
+    CUCHILLO.draw();
+    this.drawVidas();
+
     for (var i = FRUTAS.length - 1; i >= 0; i--) {
       FRUTAS[i].move();
       FRUTAS[i].draw();
-      colision = FRUTAS[i].check_collision(FRUTAS[i].x, FRUTAS[i].y, FRUTAS[i].radium, FRUTAS[i].get_vy());
+      colision = FRUTAS[i].check_collision();
 
       if(FRUTAS[i]){
         if (!FRUTAS[i].has_ended()){
           reset = false;
+        } else if (FRUTAS[i].has_ended() && !FRUTAS[i].bomb) {
+          VIDAS--;
+          FRUTAS.splice(i, 1);
         }
       }
       if(colision){
@@ -57,8 +64,6 @@ class Juego{
       setTimeout(function(){ createFruta();}, 800);
     }
 
-    CUCHILLO.draw();
-    this.drawVidas();
 
     if(VIDAS == 0){
       this.state = "lose";

@@ -20,9 +20,6 @@ G = 9.8;
 /* y kalkulatzeko konstantea */
 VY_KTE = 0.5;
 
-/* Zenbatero kalkulatzen den posizioa */
-OFFSET = 0.12;
-
 /* vy parametroak frutak pantaila barruan ager daitezen */
 VY_MAX = -95
 VY_MIN = -75
@@ -32,10 +29,15 @@ RADIUM = 45;
 
 /* Bola kopurua */
 NUMBOLAS = 3;
+MAX_NUMBOLAS = 10;
 
 /* Zailtasuna */
 HARDNESS = 0.85;
-ZAILTASUNA = 1;
+MIN_HARDNESS = 0.45;
+
+/* Zenbatero kalkulatzen den posizioa */
+OFFSET = 0.12;
+MAX_OFFSET = 0.26;
 
 /* Ziklo kopurua */
 ZIKLO = 0;
@@ -60,5 +62,11 @@ VIDAS = POS_VIDAS.length;
 /* Mute */
 OP_MUSICA = true;
 
-/* IRUDIXAK */
+/* Irudixak */
 IMAGES = {};
+
+/* Puntuazioa */
+PUNTUAZIOA = 0;
+
+/* Nibelak */
+NIBELAK = 3;

@@ -63,18 +63,22 @@ function init_irudiak() {
     "opciones_inv": loadImage("./media/menu/opciones_inv.png"),
     "ranking": loadImage("./media/menu/ranking.png"),
     "ranking_inv": loadImage("./media/menu/ranking_inv.png"),
+    "opcion_cuchillo1" : loadImage("./media/menu/opcion_cuchillo1.png"),
+    "opcion_cuchillo2" : loadImage("./media/menu/opcion_cuchillo2.png"),
+    "opcion_no" : loadImage("./media/menu/opcion_no.png"),
+    "opcion_si" : loadImage("./media/menu/opcion_si.png"),
     // Statusak
     "game_over": loadImage("./media/state/game_over.png"),
     "success": loadImage("./media/state/success.png"),
     // Itemak
-    "bomba": loadImage("./media/Bomba.gif"),
-    "corazon": loadImage("./media/Corazon.gif"),
-    "cuchillo1": loadImage("./media/Cuchillo1.png"),
-    "cuchillo2": loadImage("./media/Cuchillo2.png"),
-    "pantalla1": loadImage("./media/Pantalla1.png"),
-    "pantalla2": loadImage("./media/Pantalla2.png"),
-    "pantalla3": loadImage("./media/Pantalla3.png"),
-    "pineapple": loadImage("./media/Pineapple.png"),
-    "watermelon": loadImage("./media/Watermelon.png")
+    "bomba": loadImage("./media/item/Bomba.gif"),
+    "corazon": loadImage("./media/item/Corazon.gif"),
+    "cuchillo1": loadImage("./media/item/Cuchillo1.png"),
+    "cuchillo2": loadImage("./media/item/Cuchillo2.png"),
+    "pantalla1": loadImage("./media/item/Pantalla1.png"),
+    "pantalla2": loadImage("./media/item/Pantalla2.png"),
+    "pantalla3": loadImage("./media/item/Pantalla3.png"),
+    "pineapple": loadImage("./media/item/Pineapple.png"),
+    "watermelon": loadImage("./media/item/Watermelon.png")
   };
 }

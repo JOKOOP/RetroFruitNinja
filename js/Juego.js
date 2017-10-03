@@ -20,6 +20,7 @@ class Juego{
     NUMBOLAS = 3;
     FRUTAS = [];
     OFFSET = 0.12;
+    PUNTUAZIOA = 0;
     createFruta();
   }
 
@@ -50,19 +51,24 @@ class Juego{
       if(FRUTAS[i]){
         if (!FRUTAS[i].has_ended()){
           reset = false;
+        } else {
+          PUNTUAZIOA += FRUTAS[i].color.kale;
+          FRUTAS.splice(i, 1);
         } 
          /* Hau oso zaila da */
         //else if (FRUTAS[i].has_ended() && !FRUTAS[i].bomba) {
         //  VIDAS--;
         //  FRUTAS.splice(i, 1);
-        //1}
+        //}
       }
       if(colision){
+        PUNTUAZIOA += FRUTAS[i].color.ondo;
         FRUTAS.splice(i, 1);
       }
     }
 
     if (reset && FRUTAS !== false) {
+      console.log("Score: " + PUNTUAZIOA)
       FRUTAS = false;
       this.ziklo++;
       setTimeout(function(){ createFruta();}, 800);
@@ -73,24 +79,24 @@ class Juego{
       this.state = "lose";
     }
 
-    if (this.ziklo == 2) { // Debug
-      this.zailtasuna++;
+    if (this.ziklo == this.zailtasuna * 5) { // Debug
 
-      if(this.zailtasuna > 3) {
-        this.state = "win";
-      }else{
-        this.image = this.backgrounds[this.zailtasuna-1];
-      }
       this.zaildu();
+      
+      if(this.zailtasuna < NIBELAK) {  
+        this.zailtasuna++;
+        this.image = this.backgrounds[this.zailtasuna-1];
+        if(OP_MUSICA) {
+          this.musica.play_next();
+        }
+      }
       this.ziklo = 0;
     }
   }
 
   zaildu(){
-    NUMBOLAS++;
-    OFFSET += 0.04;
-    if(OP_MUSICA) {
-      this.musica.play_next();
-    }
+    if (NUMBOLAS <= MAX_NUMBOLAS) NUMBOLAS++;
+    if (OFFSET <= MAX_OFFSET) OFFSET += 0.04;
+    if (HARDNESS >= MIN_HARDNESS) HARDNESS -= 0.05
   }
 }

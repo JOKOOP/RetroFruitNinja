@@ -17,9 +17,9 @@ class Fruta { // No estoy muy deacuerdo con el nombre pero es absurdo hacer 2 cl
 
   get_color(){
     if(this.bomba){0
-      return IMAGES.bomba;
+      return {"irudia" : IMAGES.bomba, "ondo" : 0, "kale" : 0};
     }else{
-      return (Math.random() > 0.5) ? IMAGES.watermelon : IMAGES.pineapple;
+      return (Math.random() > 0.5) ? {"irudia" : IMAGES.watermelon, "ondo" : 30, "kale" : -60} : {"irudia" : IMAGES.pineapple, "ondo" : 50, "kale" : -100};
     }
   }
 
@@ -35,13 +35,15 @@ class Fruta { // No estoy muy deacuerdo con el nombre pero es absurdo hacer 2 cl
     return this.baseX;
   }
 
-  draw(){ //else if (FRUTAS[i].has_ended() && !FRUTAS[i].bomba) {
-        //  VIDAS--;
-        //  FRUTAS.splice(i, 1);
-        //1}
+  draw(){ 
     this.vym = get_vy_t(this.vy, this.time);
-    //this.radium = (this.vym < 0) ? ((this.vym < -25) ? RADIUM/1.3 : RADIUM / 1.2) : ((this.vym < 25) ? RADIUM / 1.1 : RADIUM); //Haundiagoa
-    image(this.color, this.x, this.y, this.radium, this.radium);
+    /*****************************************************************************************************************************
+    * Ondorengo zenbaki majikoak patroi honen zuzenaren malda eta ordenatu jatorriari dagozkie:                                   *
+    * this.radium = (this.vym < 0) ? ((this.vym < -25) ? RADIUM/1.3 : RADIUM / 1.2) : ((this.vym < 25) ? RADIUM / 1.1 : RADIUM); *
+    ******************************************************************************************************************************/
+    this.radium = RADIUM * ((this.vym * 0.002) + 1.15)
+    
+    image(this.color.irudia, this.x, this.y, this.radium, this.radium);
   }
 
   move(){

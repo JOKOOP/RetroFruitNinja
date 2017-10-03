@@ -8,6 +8,8 @@ class Menu {
     this.state = "root";
     this.img = IMAGES.menu_nagusia;
     this.resaltatu = "";
+    this.musika_status = IMAGES.opcion_si;
+    this.kutxillo_status = IMAGES.opcion_cuchillo1;
     if(OP_MUSICA)
       this.musica.play_menu_song();
   }
@@ -77,6 +79,8 @@ class Menu {
   }
 
   opciones_mouse(){
+    image(this.musika_status, 0, 0);
+    image(this.kutxillo_status, 0, 0);
     if(mouseIsPressed){
       if(mouseButton == LEFT){
         if(mouseX > 300 && mouseX < 419 && mouseY > 393 && mouseY < 440){ //volver
@@ -84,25 +88,26 @@ class Menu {
         }
 
         if(mouseX > 420 && mouseX < 435 && mouseY > 200 && mouseY < 230){ //sound
-          console.log("Musica apagada");
-          if (OP_MUSICA){
-            this.musica.pause();
-            OP_MUSICA = false;
-          }
-        }
-        if(mouseX > 475 && mouseX < 490 && mouseY > 200 && mouseY < 230){ //sound
-          console.log("Musica encendida");
           if (!OP_MUSICA){
             this.musica.play_menu_song();
             OP_MUSICA = true;
+            this.musika_status = IMAGES.opcion_si;
           }
         }
-
+        if(mouseX > 475 && mouseX < 490 && mouseY > 200 && mouseY < 230){ //sound
+          if (OP_MUSICA){
+            this.musica.pause();
+            OP_MUSICA = false;
+            this.musika_status = IMAGES.opcion_no; 
+          }
+        }
         if(mouseX > 420 && mouseX < 435 && mouseY > 245 && mouseY < 264){ //cushi
           CUCHILLO.la_faca = IMAGES.cuchillo1;
+          this.kutxillo_status = IMAGES.opcion_cuchillo1;
         }
-        if(mouseX > 475 && mouseX < 490 && mouseY > 245 && mouseY < 264){ //cushi
-          CUCHILLO.la_faca = IMAGES.cuchillo1;
+        if(mouseX > 525 && mouseX < 540 && mouseY > 245 && mouseY < 264){ //cushi
+          CUCHILLO.la_faca = IMAGES.cuchillo2;
+          this.kutxillo_status = IMAGES.opcion_cuchillo2;
         }
       }
     }

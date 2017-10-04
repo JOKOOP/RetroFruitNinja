@@ -16,7 +16,7 @@ def add_rank():
         try:
             db_session.add(r)
             db_session.commit()
-            return jsonify({"msg" : "success"}), 200
+            return jsonify({"success" : "true"}), 200
         except:
             db_session.flush()
             return jsonify({"msg" : "Database Error"}), 500

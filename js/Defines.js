@@ -70,3 +70,6 @@ PUNTUAZIOA = 0;
 
 /* Nibelak */
 NIBELAK = 3;
+
+/* Tipografia */
+FONT = "";

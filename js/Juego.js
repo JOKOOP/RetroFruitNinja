@@ -42,6 +42,7 @@ class Juego{
     image(this.image, 0, 0);
     CUCHILLO.draw();
     this.drawVidas();
+    this.update_puntuak();
 
     for (var i = FRUTAS.length - 1; i >= 0; i--) {
       FRUTAS[i].move();
@@ -98,5 +99,11 @@ class Juego{
     if (NUMBOLAS <= MAX_NUMBOLAS) NUMBOLAS++;
     if (OFFSET <= MAX_OFFSET) OFFSET += 0.04;
     if (HARDNESS >= MIN_HARDNESS) HARDNESS -= 0.05
+  }
+
+  update_puntuak(){
+    fill('#FFFFFF');
+    textFont(FONT, 30);
+    text(PUNTUAZIOA + " puntos", 45, 45)
   }
 }

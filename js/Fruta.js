@@ -38,7 +38,7 @@ class Fruta { // No estoy muy deacuerdo con el nombre pero es absurdo hacer 2 cl
   draw(){ 
     this.vym = get_vy_t(this.vy, this.time);
     /*****************************************************************************************************************************
-    * Ondorengo zenbaki majikoak patroi honen zuzenaren malda eta ordenatu jatorriari dagozkie:                                   *
+    * Ondorengo zenbaki majikoak patroi honen zuzenaren malda eta ordenatu jatorriari dagozkie: y = 0.002x + 1.15                                   *
     * this.radium = (this.vym < 0) ? ((this.vym < -25) ? RADIUM/1.3 : RADIUM / 1.2) : ((this.vym < 25) ? RADIUM / 1.1 : RADIUM); *
     ******************************************************************************************************************************/
     this.radium = RADIUM * ((this.vym * 0.002) + 1.15)

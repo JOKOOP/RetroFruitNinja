@@ -3,7 +3,7 @@ var state = "menu";
 function setup() {
   var canvas = createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
   configureCanvas(canvas);
-  init_irudiak();
+  init();
   MENU = new Menu();
   MENU.setup();
   JUEGO = new Juego();
@@ -39,7 +39,7 @@ function configureCanvas(canvas) {
   canvasHTML.className = 'game';
 }
 
-function init_irudiak() {
+function init() {
 
   IMAGES = {
     // Menua
@@ -81,4 +81,6 @@ function init_irudiak() {
     "pineapple": loadImage("./media/item/Pineapple.png"),
     "watermelon": loadImage("./media/item/Watermelon.png")
   };
+
+  FONT = loadFont("./media/fonts/Mario-Kart-DS.ttf");
 }

@@ -1,4 +1,4 @@
-AJAX_SERVER = "http://127.0.0.1:5000"
+AJAX_SERVER = "http://zerbitzaria.ovh:5000"
 
 class Ranking {
 

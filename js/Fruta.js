@@ -19,7 +19,7 @@ class Fruta { // No estoy muy deacuerdo con el nombre pero es absurdo hacer 2 cl
     if(this.bomba){0
       return {"irudia" : IMAGES.bomba, "ondo" : 0, "kale" : 0};
     }else{
-      return (Math.random() > 0.5) ? {"irudia" : IMAGES.watermelon, "ondo" : 30, "kale" : -60} : {"irudia" : IMAGES.pineapple, "ondo" : 50, "kale" : -100};
+      return (Math.random() > 0.5) ? {"irudia" : IMAGES.watermelon, "ondo" : 30, "kale" : -20} : {"irudia" : IMAGES.pineapple, "ondo" : 50, "kale" : -40};
     }
   }
 

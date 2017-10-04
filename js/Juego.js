@@ -98,7 +98,7 @@ class Juego{
   zaildu(){
     if (NUMBOLAS <= MAX_NUMBOLAS) NUMBOLAS++;
     if (OFFSET <= MAX_OFFSET) OFFSET += 0.04;
-    if (HARDNESS >= MIN_HARDNESS) HARDNESS -= 0.05
+    if (HARDNESS >= MIN_HARDNESS) HARDNESS -= 0.05;
   }
 
   update_puntuak(){

@@ -32,7 +32,16 @@ class Juego{
 
   drawVidas(){
     for (var i = VIDAS - 1; i >= 0; i--) {
-      image(this.bidak, POS_VIDAS[i].posXnull
+      image(this.bidak, POS_VIDAS[i].posX, POS_VIDAS[i].posY, 20, 20);
+    }
+  }
+
+  draw(){
+    clear();
+    var reset = true;
+    var colision = false;
+
+    image(this.image, 0, 0);
     CUCHILLO.draw();
     this.drawVidas();
     this.update_puntuak();

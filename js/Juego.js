@@ -17,6 +17,7 @@ class Juego{
     this.ziklo = 0;
     this.state = "playing";
     this.zailtasuna = 1;
+    this.request = false;
     VIDAS = POS_VIDAS.length;
     NUMBOLAS = 3;
     FRUTAS = [];
@@ -31,16 +32,7 @@ class Juego{
 
   drawVidas(){
     for (var i = VIDAS - 1; i >= 0; i--) {
-      image(this.bidak, POS_VIDAS[i].posX, POS_VIDAS[i].posY, 20, 20);
-    }
-  }
-
-  draw(){
-    clear();
-    var reset = true;
-    var colision = false;
-    
-    image(this.image, 0, 0);
+      image(this.bidak, POS_VIDAS[i].posXnull
     CUCHILLO.draw();
     this.drawVidas();
     this.update_puntuak();
@@ -56,7 +48,7 @@ class Juego{
         } else {
           PUNTUAZIOA += FRUTAS[i].color.kale;
           FRUTAS.splice(i, 1);
-        } 
+        }
          /* Hau oso zaila da */
         //else if (FRUTAS[i].has_ended() && !FRUTAS[i].bomba) {
         //  VIDAS--;
@@ -77,15 +69,25 @@ class Juego{
     }
 
 
-    if(VIDAS == 0){
-      this.state = "lose";
+    if(VIDAS == 0 && !this.request){
+      this.request = true;
+      Ranking.add({"name" : NICKNAME, "points" : PUNTUAZIOA}, function(res){
+        res = JSON.jsonify(res);
+        if (res.points == "best"){
+          this.state = "win";
+        }else if (res.points == "worst") {
+          this.state = "lose";
+        }else{
+          this.state = "none";
+        }
+      });
     }
 
     if (this.ziklo == this.zailtasuna * 5) { // Debug
 
       this.zaildu();
-      
-      if(this.zailtasuna < NIBELAK) {  
+
+      if(this.zailtasuna < NIBELAK) {
         this.zailtasuna++;
         this.image = this.backgrounds[this.zailtasuna-1];
         if(OP_MUSICA) {

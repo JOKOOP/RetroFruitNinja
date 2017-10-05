@@ -2,7 +2,7 @@ AJAX_SERVER = "http://zerbitzaria.ovh:5000"
 
 class Ranking {
 
-  static get_best(succ){ 
+  static get_best(succ){
     var req = new XMLHttpRequest();
     req.onreadystatechange = function(){
       if (req.readyState == 4){
@@ -34,12 +34,12 @@ class Ranking {
     req.send();
   }
 
-  static add(rank){
+  static add(rank, succ){
     var req = new XMLHttpRequest();
     req.onreadystatechange = function(){
       if (req.readyState == 4){
         if (req.status == 200){
-          console.log("Saved")
+          succ(req.responseText);
         }
       }
     }
@@ -50,4 +50,3 @@ class Ranking {
     req.send(JSON.stringify(rank));
   }
 }
-

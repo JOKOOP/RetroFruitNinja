@@ -10,6 +10,43 @@ ADDR = "0.0.0.0"
 app = Flask(__name__)
 CORS(app)
 
+def get_best_rank():
+    ranking = Rank.query.order_by(desc(Rank.points)).all()
+    rt = []
+
+    for r in ranking:
+        if len(rt) < 5:
+            rt.append(r)
+        else:
+            break
+
+    return rt
+
+def get_worst_rank():
+    ranking = Rank.query.order_by(Rank.points).all()
+    rt = []
+
+    for r in ranking:
+        if len(rt) < 5:
+            rt.append(r)
+        else:
+            break
+
+    return rt
+
+def check_rank(id):
+    ranking = get_best_rank()
+    for r in ranking:
+        if r.id == id:
+            return "best"
+
+    ranking = get_worst_rank()
+    for r in ranking:
+        if r.id == id:
+            return "worst"
+
+    return "none"
+
 @app.route("/add_rank", methods=["POST"])
 def add_rank():
     try:
@@ -18,7 +55,10 @@ def add_rank():
         try:
             db_session.add(r)
             db_session.commit()
-            return jsonify({"success" : "true"}), 200
+
+            rank = check_rank(r.id)
+
+            return jsonify({"success" : "true", "rank" : rank}), 200
         except:
             db_session.flush()
             return jsonify({"msg" : "Database Error"}), 500
@@ -28,14 +68,7 @@ def add_rank():
 @app.route("/get_best", methods=["GET"])
 def get_best():
     try:
-        ranking = Rank.query.order_by(desc(Rank.points)).all()
-        rt = []
-
-        for r in ranking:
-            if len(rt) < 5:
-                rt.append(r)
-            else:
-                break
+        rt = get_best_rank()
 
         return jsonify(success="true", ranking=[e.serialize() for e in rt]), 200
     except:
@@ -44,14 +77,7 @@ def get_best():
 @app.route("/get_worst", methods=["GET"])
 def get_worst():
     try:
-        ranking = Rank.query.order_by(Rank.points).all()
-        rt = []
-
-        for r in ranking:
-            if len(rt) < 5:
-                rt.append(r)
-            else:
-                break
+        rt = get_worst_rank()
 
         return jsonify(success="true", ranking=[e.serialize() for e in rt]), 200
     except:

@@ -73,3 +73,6 @@ NIBELAK = 3;
 
 /* Tipografia */
 FONT = "";
+
+/* Izena */
+NICKNAME ="";

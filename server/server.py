@@ -1,4 +1,5 @@
 from flask import Flask, request, abort, jsonify
+from flask_cors import CORS
 from sqlalchemy import desc
 from models import Rank
 from database import db_session
@@ -7,6 +8,7 @@ PORT = 5000
 ADDR = "0.0.0.0"
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/add_rank", methods=["POST"])
 def add_rank():

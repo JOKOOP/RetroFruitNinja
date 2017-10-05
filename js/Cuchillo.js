@@ -4,8 +4,7 @@ WIDTH = 100
 /**
  * 
  * @class
- * @classdesc Representa al cuchillo que, dentro del juego, está localizado en la parte baja de la 
- *            pantalla moviendose horizontalmente siguiendo el puntero del ratón.
+ * @classdesc Representa al cuchillo presente dentro de la partida.
  * @property {int} x - Posición horizontal inicial (varia según la posición del puntero)
  * @property {int} y - Posición vertical (fijo)
  * @property {int} height - Altura del cuchillo

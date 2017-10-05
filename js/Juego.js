@@ -72,7 +72,7 @@ class Juego{
     if(VIDAS == 0 && !this.request){
       this.request = true;
       Ranking.add({"name" : NICKNAME, "points" : PUNTUAZIOA}, function(res){
-        res = JSON.jsonify(res);
+        res = JSON.parse(res);
         if (res.points == "best"){
           this.state = "win";
         }else if (res.points == "worst") {

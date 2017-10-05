@@ -2,47 +2,52 @@ AJAX_SERVER = "http://zerbitzaria.ovh:5000"
 
 class Ranking {
 
-  static get_best(succ){ // succ = funcion a ejecutar cuando llegue la respuesta
-    $.ajax({
-      success: function(data){
-        succ(data.ranking);
-      },
-      error: function(data){
-        alert("error! "+JSON.stringify(data)); // debug
-      },
-      processData: false,
-      type: 'GET',
-      url: AJAX_SERVER+'/get_best'
-    });
+  static get_best(succ){ 
+    var req = new XMLHttpRequest();
+    req.onreadystatechange = function(){
+      if (req.readyState == 4){
+        if (req.status == 200){
+          succ(req.responseText);
+        }
+      }
+    }
+
+    req.open("GET", AJAX_SERVER+"/get_best", true)
+    req.setRequestHeader("Content-Type", "application/json");
+    req.setRequestHeader("Data-Type", "jsonp");
+    req.send();
   }
 
-  static get_worst(){
-    $.ajax({
-      success: function(data){
-        succ(data.ranking);
-      },
-      error: function(data){
-        alert("error! "+JSON.stringify(data)); // debug
-      },
-      processData: false,
-      type: 'GET',
-      url: AJAX_SERVER+'/get_worst'
-    });
+  static get_worst(succ){
+    var req = new XMLHttpRequest();
+    req.onreadystatechange = function(){
+      if (req.readyState == 4){
+        if (req.status == 200){
+          succ(req.responseText);
+        }
+      }
+    }
+
+    req.open("GET", AJAX_SERVER+"/get_worst", true)
+    req.setRequestHeader("Content-Type", "application/json");
+    req.setRequestHeader("Data-Type", "jsonp");
+    req.send();
   }
 
-  static add(rank){ // rank = {"name" : name, "points" : points}
-  $.ajax({
-      contentType: 'application/json',
-      data : JSON.stringify(rank),
-      success: function(data){
-        console.log("rank added")
-      },
-      error: function(data){
-        alert("error! "+JSON.stringify(data)); // debug
-      },
-      processData: false,
-      type: 'POST',
-      url: AJAX_SERVER+'/add_rank'
-    });
+  static add(rank){
+    var req = new XMLHttpRequest();
+    req.onreadystatechange = function(){
+      if (req.readyState == 4){
+        if (req.status == 200){
+          console.log("Saved")
+        }
+      }
+    }
+
+    req.open("POST", AJAX_SERVER+"/add_rank", true)
+    req.setRequestHeader("Content-Type", "application/json");
+    req.setRequestHeader("Data-Type", "jsonp");
+    req.send(JSON.stringify(rank));
   }
 }
+

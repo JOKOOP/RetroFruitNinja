@@ -12,6 +12,7 @@ class Juego{
     if(OP_MUSICA){
       this.musica.play_first();
     }
+    console.log("setup")
     this.image = this.backgrounds[0];
     this.ziklo = 0;
     this.state = "playing";
@@ -104,6 +105,6 @@ class Juego{
   update_puntuak(){
     fill('#FFFFFF');
     textFont(FONT, 30);
-    text(PUNTUAZIOA + " puntos", 45, 45)
+    text(PUNTUAZIOA + " puntos", 45, 45);
   }
 }

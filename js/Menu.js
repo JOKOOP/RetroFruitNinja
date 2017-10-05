@@ -48,7 +48,8 @@ class Menu {
     if(mouseX > 314 && mouseX < 406 && mouseY > 173 && mouseY < 200){ //jugar
       if (mouseIsPressed){
         if(mouseButton == LEFT){
-          this.state = "juego";
+          NICKNAME = "";
+          this.state = "nickName";
         }
       }
       this.resaltatu = [IMAGES.juego_inv, 0, 0];
@@ -113,6 +114,13 @@ class Menu {
     }
   }
 
+  nickname_mouse() {
+    fill('#FFFFFF');
+    textFont(FONT, 30);
+    text(NICKNAME, 338, 230);
+    
+  }
+
   ranking_mouse(){
     if(mouseIsPressed){
       if(mouseButton == LEFT){
@@ -165,6 +173,23 @@ class Menu {
         this.img = IMAGES.success;
         this.over_mouse();
         break;
+      case "nickName":
+        this.img = IMAGES.nickName;
+        this.nickname_mouse();
+        break;
+      default:
+        break;
     }
+  }
+}
+
+function keyTyped() {
+  if(keyCode > 96 && keyCode < 123 && NICKNAME.length < 3){
+    NICKNAME += (key);
+  }else if(keyCode > 96 && keyCode < 123){
+    NICKNAME = NICKNAME.substring(0,2);
+    NICKNAME += key;   
+  }else if (keyCode == ENTER){
+    MENU.state = "juego";
   }
 }

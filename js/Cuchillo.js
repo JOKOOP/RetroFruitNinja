@@ -1,13 +1,10 @@
-HEIGHT = 35
-WIDTH = 100
-
 class Cuchillo {
 
   constructor (){
     this.x = mouseX;
     this.y = 440;
-    this.height = HEIGHT;
-    this.width = WIDTH;
+    this.height = 35;
+    this.width = 100;
     this.la_faca = IMAGES.cuchillo1;
   }
 

@@ -67,6 +67,7 @@ function init() {
     "opcion_cuchillo2" : loadImage("./media/menu/opcion_cuchillo2.png"),
     "opcion_no" : loadImage("./media/menu/opcion_no.png"),
     "opcion_si" : loadImage("./media/menu/opcion_si.png"),
+    "nickName": loadImage("./media/menu/nickname.png"),
     // Statusak
     "game_over": loadImage("./media/state/game_over.png"),
     "success": loadImage("./media/state/success.png"),
@@ -80,6 +81,7 @@ function init() {
     "pantalla3": loadImage("./media/item/Pantalla3.png"),
     "pineapple": loadImage("./media/item/Pineapple.png"),
     "watermelon": loadImage("./media/item/Watermelon.png")
+
   };
 
   FONT = loadFont("./media/fonts/Mario-Kart-DS.ttf");

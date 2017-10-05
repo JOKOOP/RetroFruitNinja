@@ -73,9 +73,10 @@ class Juego{
       this.request = true;
       Ranking.add({"name" : NICKNAME, "points" : PUNTUAZIOA}, function(res){
         res = JSON.parse(res);
-        if (res.points == "best"){
+        alert(res.rank);
+        if (res.rank == "best"){
           this.state = "win";
-        }else if (res.points == "worst") {
+        }else if (res.rank == "worst") {
           this.state = "lose";
         }else{
           this.state = "none";

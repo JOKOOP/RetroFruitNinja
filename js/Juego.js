@@ -82,13 +82,12 @@ class Juego{
       this.request = true;
       Ranking.add({"name" : NICKNAME, "points" : PUNTUAZIOA}, function(res){
         res = JSON.parse(res);
-        alert(res.rank);
         if (res.rank == "best"){
-          this.state = "win";
+          JUEGO.state = "win";
         }else if (res.rank == "worst") {
-          this.state = "lose";
+          JUEGO.state = "lose";
         }else{
-          this.state = "none";
+          JUEGO.state = "none";
         }
       });
     }

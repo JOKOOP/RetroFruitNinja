@@ -1,3 +1,22 @@
+/**
+ * 
+ * @class
+ * @classdesc Representa a cada furta o bomba presentes en la partida.
+ * @property {int} baseX      - Posición horizontal inicial (fija).
+ * @property {int} baseY      - Posición vertical inicial (fija).
+ * @property {int} x          - Posición horizontal (variable).
+ * @property {int} y          - Posición vertical (variable).
+ * @property {int} vx         - Velocidad horizontal (fija).
+ * @property {int} vy         - Velocidad vertical inicial (fija).
+ * @property {int} vym        - Velocidad vertical del momento (variable).
+ * @property {int} radium     - Radio de las frutas y bombas.
+ * @property {boolean} bomba  - Especifica si es una bomba o una fruta. De ser true, es una bomba.
+ * @property {obj} color      - Imágen a usar.
+ * @property {int} time       - Tiempo.
+ * @property {boolean} ended  - Señala el momento en el que la fruta o bomba ha salido de la pantalla.
+ *
+ * 
+ */
 class Fruta { // No estoy muy deacuerdo con el nombre pero es absurdo hacer 2 clases
 
   constructor (x, y, vx, vy, bomba){
@@ -14,7 +33,10 @@ class Fruta { // No estoy muy deacuerdo con el nombre pero es absurdo hacer 2 cl
     this.time = 0;
     this.ended = false;
   }
-
+  /**
+   * Establece qué imágen ha de usarse. Si el objeto es una bomba, se establece la imágen de bomba. Si es una fruta, se elige aleatoriamente entre la imágen de 
+   * sandía y la de la piña.
+   */
   get_color(){
     if(this.bomba){0
       return IMAGES.bomba;
@@ -22,19 +44,28 @@ class Fruta { // No estoy muy deacuerdo con el nombre pero es absurdo hacer 2 cl
       return (Math.random() > 0.5) ? IMAGES.watermelon : IMAGES.pineapple;
     }
   }
-
+  /**
+   * Devuelve el valor de la velocidad horizontal.
+   */
   get_vx() {
     return this.vx;
   }
-
+   /**
+   * Devuelve el valor de la velocidad vertical en ése momento.
+   */
   get_vy() {
     return this.vy;
   }
-
+  /**
+   * Devuelve el valor de la posición horizontal inicial.
+   */
   get_baseX(){
     return this.baseX;
   }
-
+  /**
+   * Dibuja la imágen del objeto en la posición que debe estar en la pantalla del según se ha calculado en la función "move". Además, se calcula la velocidad del 
+   * objeto en ése momento con "get_vy_t".
+   */
   draw(){ //else if (FRUTAS[i].has_ended() && !FRUTAS[i].bomba) {
         //  VIDAS--;
         //  FRUTAS.splice(i, 1);
@@ -43,7 +74,10 @@ class Fruta { // No estoy muy deacuerdo con el nombre pero es absurdo hacer 2 cl
     //this.radium = (this.vym < 0) ? ((this.vym < -25) ? RADIUM/1.3 : RADIUM / 1.2) : ((this.vym < 25) ? RADIUM / 1.1 : RADIUM); //Haundiagoa
     image(this.color, this.x, this.y, this.radium, this.radium);
   }
-
+  /**
+   * Calcula la posición en la que tiene que estar el objeto en la pantalla de juego en ése momento (t) específico teniendo en cuenta la posición y velocidad 
+   * iniciales y el tiempo. Después actualiza los datos con los resultados.
+   */
   move(){
     var array = makeFall(this.baseX, this.vx, this.time, this.baseY, this.vy);
     this.x = array[0];
@@ -54,7 +88,9 @@ class Fruta { // No estoy muy deacuerdo con el nombre pero es absurdo hacer 2 cl
       this.ended = true;
     }
   }
-
+  /**
+   * Comprueba si la posición de la fruta es tal que entra en colisión con el cuchillo y devuelve el resultado en boolean.
+   */
   check_collision(){
     var colision;
     var i = 0;
@@ -73,7 +109,9 @@ class Fruta { // No estoy muy deacuerdo con el nombre pero es absurdo hacer 2 cl
     }
     return colision;
   }
-
+  /**
+  *Devueleve el dato que indica si la fruta ha salido de la pantalla. 
+  */
   has_ended () {
     return this.ended;
   }

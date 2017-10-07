@@ -2,17 +2,17 @@
  * 
  * @class
  * @classdesc Representa a cada furta o bomba presentes en la partida.
- * @property {int} baseX      - Posición horizontal inicial (fija).
- * @property {int} baseY      - Posición vertical inicial (fija).
- * @property {int} x          - Posición horizontal (variable).
- * @property {int} y          - Posición vertical (variable).
- * @property {int} vx         - Velocidad horizontal (fija).
- * @property {int} vy         - Velocidad vertical inicial (fija).
- * @property {int} vym        - Velocidad vertical del momento (variable).
- * @property {int} radium     - Radio de las frutas y bombas.
+ * @property {float} baseX      - Posición horizontal inicial (fija).
+ * @property {float} baseY      - Posición vertical inicial (fija).
+ * @property {float} x          - Posición horizontal (variable).
+ * @property {float} y          - Posición vertical (variable).
+ * @property {float} vx         - Velocidad horizontal (fija).
+ * @property {float} vy         - Velocidad vertical inicial (fija).
+ * @property {float} vym        - Velocidad vertical del momento (variable).
+ * @property {float} radium     - Radio de las frutas y bombas.
  * @property {boolean} bomba  - Especifica si es una bomba o una fruta. De ser true, es una bomba.
  * @property {obj} color      - Imágen a usar.
- * @property {int} time       - Tiempo.
+ * @property {float} time       - Tiempo.
  * @property {boolean} ended  - Señala el momento en el que la fruta o bomba ha salido de la pantalla.
  *
  * 

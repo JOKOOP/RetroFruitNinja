@@ -5,10 +5,10 @@ WIDTH = 100
  * 
  * @class
  * @classdesc Representa al cuchillo presente dentro de la partida.
- * @property {int} x - Posición horizontal inicial (varia según la posición del puntero)
- * @property {int} y - Posición vertical (fijo)
- * @property {int} height - Altura del cuchillo
- * @property {int} width - Anchura del cuchillo
+ * @property {float} x - Posición horizontal inicial (varia según la posición del puntero)
+ * @property {float} y - Posición vertical (fijo)
+ * @property {float} height - Altura del cuchillo
+ * @property {float} width - Anchura del cuchillo
  * @property {obj} la_faca - Dirección a la imagen del cuchillo en uso.
  * 
  */

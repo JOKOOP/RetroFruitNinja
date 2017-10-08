@@ -18,18 +18,20 @@ function draw() {
       state = "juego";
       MENU.end();
       JUEGO.setup();
+    } else if (MENU.state == "best") {
+      MENU.setwin();
+    } else if (MENU.state == "worst") {
+      MENU.setover();
+    } else if (MENU.state == "none") {
+      MENU.setunranked();
     }
   } else if (state == "juego") {
     JUEGO.draw();
-    if (JUEGO.state == "win") {
+    if (JUEGO.state == "waiting") {
       state = "menu";
       JUEGO.end();
-      MENU.setwin();
-    } else if (JUEGO.state == "lose") {
-      state = "menu";
-      JUEGO.end();
-      MENU.setover();
-    }
+      MENU.waitresult();
+    } 
   }
 }
 
@@ -71,6 +73,8 @@ function init() {
     // Statusak
     "game_over": loadImage("./media/state/game_over.png"),
     "success": loadImage("./media/state/success.png"),
+    "not_ranked": loadImage("./media/state/not_ranked.png"),
+    "loading" : loadImage("./media/state/loading.gif"),
     // Itemak
     "bomba": loadImage("./media/item/Bomba.gif"),
     "corazon": loadImage("./media/item/Corazon.gif"),
@@ -85,4 +89,21 @@ function init() {
   };
 
   FONT = loadFont("./media/fonts/Mario-Kart-DS.ttf");
+}
+
+function keyTyped() {
+  if (MENU.state == "nickName") {
+    if(keyCode > 96 && keyCode < 123 && NICKNAME.length < 3){
+      NICKNAME += (key);
+    }else if(keyCode > 96 && keyCode < 123){
+      NICKNAME = NICKNAME.substring(0,2);
+      NICKNAME += key;   
+    }else if (keyCode == ENTER){
+      MENU.state = "juego";
+    }
+  }
+}
+
+function analize_result (ret_json) {
+  MENU.state = ret_json.rank;
 }

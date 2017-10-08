@@ -10,15 +10,17 @@ class Menu {
     this.resaltatu = "";
     this.musika_status = IMAGES.opcion_si;
     this.kutxillo_status = IMAGES.opcion_cuchillo1;
-    if(OP_MUSICA)
+    if(OP_MUSICA) {
       this.musica.play_menu_song();
+    }
   }
 
   setover(){
     this.state = "over";
     this.img = IMAGES.game_over;
-    if(OP_MUSICA)
+    if(OP_MUSICA) {
       this.musica.play_over_song();
+    }
   }
 
   setwin(){
@@ -26,6 +28,22 @@ class Menu {
     this.img = IMAGES.success;
     if(OP_MUSICA)
       this.musica.play_succ_song();
+  }
+
+  setunranked(){
+    this.state = "unranked";
+    this.img = IMAGES.not_ranked;
+    if(OP_MUSICA) {
+      this.musica.play_menu_song();
+    }
+  }
+
+  waitresult() {
+    this.state = "wait";
+    this.img = IMAGES.loading;
+    if(OP_MUSICA) {
+      this.musica.play_menu_song();
+    }
   }
 
   end(){
@@ -64,6 +82,11 @@ class Menu {
       if (mouseIsPressed){
         if(mouseButton == LEFT){
           this.state = "ranking";
+          this.best_str = "";
+          this.worst_str = "";
+          Ranking.get_best(this.loadBest);
+          Ranking.get_worst(this.loadWorst);
+          this.img = IMAGES.ranking;
         }
       }
       this.resaltatu = [IMAGES.ranking_inv, 0, 0];
@@ -117,11 +140,18 @@ class Menu {
   nickname_mouse() {
     fill('#FFFFFF');
     textFont(FONT, 30);
-    text(NICKNAME, 338, 230);
-    
+    text(NICKNAME, 338, 230);  
   }
 
   ranking_mouse(){
+   
+    fill('#000000');
+    textFont(FONT, 30);
+    text(this.best_str, 50, 50);
+    fill('#FFFFFF');
+    textFont(FONT, 30);
+    text(this.worst_str, 400, 50);
+    
     if(mouseIsPressed){
       if(mouseButton == LEFT){
         if(mouseX > 300 && mouseX < 419 && mouseY > 393 && mouseY < 440){ //volver
@@ -158,7 +188,6 @@ class Menu {
         this.opciones_mouse();
         break;
       case "ranking":
-        this.img = IMAGES.ranking;
         this.ranking_mouse();
         break;
       case "instrucciones":
@@ -166,11 +195,8 @@ class Menu {
         this.inst_mouse();
         break;
       case "over":
-        this.img = IMAGES.game_over;
-        this.over_mouse();
-        break;
       case "win":
-        this.img = IMAGES.success;
+      case "unranked":
         this.over_mouse();
         break;
       case "nickName":
@@ -181,15 +207,17 @@ class Menu {
         break;
     }
   }
-}
 
-function keyTyped() {
-  if(keyCode > 96 && keyCode < 123 && NICKNAME.length < 3){
-    NICKNAME += (key);
-  }else if(keyCode > 96 && keyCode < 123){
-    NICKNAME = NICKNAME.substring(0,2);
-    NICKNAME += key;   
-  }else if (keyCode == ENTER){
-    MENU.state = "juego";
+  loadBest (data) {
+    for (var i = 0; i < 5; i++) {
+      MENU.best_str += data.ranking[i].name.substring(0, 3).toUpperCase() + " ...... " + data.ranking[i].points + "\n";
+    }
   }
+
+  loadWorst (data) {
+    for (var i = 0; i < 5; i++) {
+      MENU.worst_str += data.ranking[i].name.substring(0, 3).toUpperCase() + " ...... " + data.ranking[i].points + "\n";
+    }
+  }
+  
 }

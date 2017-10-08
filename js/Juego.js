@@ -12,7 +12,6 @@ class Juego{
     if(OP_MUSICA){
       this.musica.play_first();
     }
-    console.log("setup")
     this.image = this.backgrounds[0];
     this.ziklo = 0;
     this.state = "playing";
@@ -70,7 +69,6 @@ class Juego{
     }
 
     if (reset && FRUTAS !== false) {
-      console.log("Score: " + PUNTUAZIOA)
       FRUTAS = false;
       this.ziklo++;
       setTimeout(function(){ createFruta();}, 800);
@@ -78,10 +76,11 @@ class Juego{
 
 
     if(VIDAS == 0){
-      this.state = "lose";
+      this.state = "waiting";
+      Ranking.add({"name" : NICKNAME, "points" : PUNTUAZIOA}, analize_result);
     }
 
-    if (this.ziklo == this.zailtasuna * 5) { // Debug
+    if (this.ziklo == this.zailtasuna * 5) {
 
       this.zaildu();
       

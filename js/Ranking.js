@@ -7,7 +7,7 @@ class Ranking {
     req.onreadystatechange = function(){
       if (req.readyState == 4){
         if (req.status == 200){
-          succ(req.responseText);
+          succ(JSON.parse(req.responseText));
         }
       }
     }
@@ -23,7 +23,7 @@ class Ranking {
     req.onreadystatechange = function(){
       if (req.readyState == 4){
         if (req.status == 200){
-          succ(req.responseText);
+          succ(JSON.parse(req.responseText));
         }
       }
     }
@@ -39,11 +39,10 @@ class Ranking {
     req.onreadystatechange = function(){
       if (req.readyState == 4){
         if (req.status == 200){
-          succ(req.responseText);
+          succ(JSON.parse(req.responseText));
         }
       }
     }
-
     req.open("POST", AJAX_SERVER+"/add_rank", true)
     req.setRequestHeader("Content-Type", "application/json");
     req.setRequestHeader("Data-Type", "jsonp");

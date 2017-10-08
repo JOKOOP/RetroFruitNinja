@@ -12,7 +12,6 @@ class Juego{
     if(OP_MUSICA){
       this.musica.play_first();
     }
-    console.log("setup")
     this.image = this.backgrounds[0];
     this.ziklo = 0;
     this.state = "playing";
@@ -71,28 +70,18 @@ class Juego{
     }
 
     if (reset && FRUTAS !== false) {
-      console.log("Score: " + PUNTUAZIOA)
       FRUTAS = false;
       this.ziklo++;
       setTimeout(function(){ createFruta();}, 800);
     }
 
 
-    if(VIDAS == 0 && !this.request){
-      this.request = true;
-      Ranking.add({"name" : NICKNAME, "points" : PUNTUAZIOA}, function(res){
-        res = JSON.parse(res);
-        if (res.rank == "best"){
-          JUEGO.state = "win";
-        }else if (res.rank == "worst") {
-          JUEGO.state = "lose";
-        }else{
-          JUEGO.state = "none";
-        }
-      });
+    if(VIDAS == 0){
+      this.state = "waiting";
+      Ranking.add({"name" : NICKNAME, "points" : PUNTUAZIOA}, analize_result);
     }
 
-    if (this.ziklo == this.zailtasuna * 5) { // Debug
+    if (this.ziklo == this.zailtasuna * 5) {
 
       this.zaildu();
 

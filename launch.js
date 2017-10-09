@@ -8,7 +8,7 @@ const url = require('url')
 let mainWindow
 
 function createWindow () {
-  mainWindow = new BrowserWindow({width: 735, height: 525})
+  mainWindow = new BrowserWindow({width: 735, height: 500})
 
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
@@ -20,6 +20,10 @@ function createWindow () {
     mainWindow = null
   })
 }
+
+app.on('browser-window-created',function(e,window) {
+  window.setMenu(null);
+});
 
 app.on('ready', createWindow)
 

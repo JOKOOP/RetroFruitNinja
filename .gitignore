@@ -1,2 +1,5 @@
 *.pyc
 database.db
+*.log
+dist/*
+node_modules/*

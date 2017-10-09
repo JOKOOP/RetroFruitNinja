@@ -1,0 +1,49 @@
+{
+  "name": "Retro_fruit_ninja",
+  "version": "0.1.0",
+  "main": "./launch.js",
+  "repository" : { 
+    "type" : "git",
+    "url" : "https://github.com/JOKOOP/RetroFruitNinja"
+  },
+  "author": "JOKOOP <info@jokoop.com>",
+  "license": "GPL-3.0",
+  "description": "A game from JOKOOP",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "retro-fruit-ninja",
+    "asar": true,
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "win": {
+      "target": "NSIS",
+      "icon": "build/icon.ico"
+    }
+  },
+  "devDependencies": {
+    "electron-builder": "^19.34.2",
+    "electron-prebuilt": "^1.4.13"
+  }
+}

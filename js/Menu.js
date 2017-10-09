@@ -41,9 +41,6 @@ class Menu {
   waitresult() {
     this.state = "wait";
     this.img = IMAGES.loading;
-    if(OP_MUSICA) {
-      this.musica.play_menu_song();
-    }
   }
 
   end(){

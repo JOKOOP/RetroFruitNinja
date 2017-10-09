@@ -1,5 +1,12 @@
+/**
+ * Clase del juego y sus mecanicas
+ */
 class Juego{
 
+  /**
+   * Constructor en el que se inicializa el cuchillo, la mucisa, el fondo, las imagenes y las vidas.
+   * @return {[type]}
+   */
   constructor(){
     CUCHILLO = new Cuchillo();
     this.musica = new Musica();
@@ -8,6 +15,10 @@ class Juego{
     this.bidak = IMAGES.corazon;
   }
 
+  /**
+   * Prepara el setup del juego para que se pueda empezar a jugar desde un estado 0. Imagenes, ciclos, estado, dificultad, vidas, offset y numero de bolas. Llama a la función createFruta.
+   * @return {[type]}
+   */
   setup(){
     if(OP_MUSICA){
       this.musica.play_first();
@@ -23,16 +34,28 @@ class Juego{
     createFruta();
   }
 
+  /**
+   * Pausa la musica del juego.
+   * @return {[type]}
+   */
   end(){
     this.musica.pause();
   }
 
+  /**
+   * Función encargada de dibujar las vidas.
+   * @return {[type]}
+   */
   drawVidas(){
     for (var i = VIDAS - 1; i >= 0; i--) {
       image(this.bidak, POS_VIDAS[i].posX, POS_VIDAS[i].posY, 20, 20);
     }
   }
 
+  /**
+   * Función que se encarga de dibujar todos los elementos variables del juego, de la interacción entre ellas y de el cambio de dificultad.
+   * @return {[type]}
+   */
   draw(){
     clear();
     var reset = true;
@@ -86,6 +109,10 @@ class Juego{
     }
   }
 
+  /**
+   * Función que se encarga de dificultar el juego pasado un periodo de tiempo
+   * @return {[type]}
+   */
   zaildu(){
     NUMBOLAS++;
     OFFSET += 0.04;

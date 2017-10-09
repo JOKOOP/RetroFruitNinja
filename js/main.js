@@ -1,5 +1,13 @@
+/**
+ * La variable estado se utiliza para saber en que estado se haya el juego. Luede ser de distintos tipos (menu, juego, win, lose,opciones, ranking, instrucciones, over, root)
+ * @type {String}
+ */
 var state = "menu";
 
+/**
+ * La función setup se encarga de crear y configurar el canvas a la vez que inicializarlas variables menu, juego y establecer un frameRate.
+ * @return {[type]}
+ */
 function setup() {
   var canvas = createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
   configureCanvas(canvas);
@@ -10,6 +18,10 @@ function setup() {
   frameRate(FPS);
 }
 
+/**
+ * La función draw se encarga de dibujar el menu, el juego y los estados de "ganar/perder"
+ * @return {[type]}
+ */
 function draw() {
   clear();
   if (state == "menu") {
@@ -33,12 +45,20 @@ function draw() {
   }
 }
 
+/**
+ * ConfigureCanvas se encarga de darle una configuración inicial al canvas. En este caso le da el nombre de "game".
+ * @param  {[Canvas]} El canvas en el que se desea aplicar la configuración
+ * @return {[type]}
+ */
 function configureCanvas(canvas) {
   canvas.parent('game-holder');
   var canvasHTML = document.getElementById('defaultCanvas0');
   canvasHTML.className = 'game';
 }
 
+/**
+ * inicialización de todas las imagenes e ne ljuego.
+ */
 function init_irudiak() {
 
   IMAGES = {

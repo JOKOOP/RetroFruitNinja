@@ -1,9 +1,21 @@
+/**
+ * @class La clase del menu, donde se controlan todas las opciones y la selección de cada opción que hace el jugador.
+ * @property {Musica} musica Variable que controla la mucisa del menu
+ */
 class Menu {
 
+  /**
+   * Constructor de la clase Menu, crea la variable musica.
+   * @return {[type]}
+   */
   constructor(){
     this.musica = new Musica();
   }
 
+  /**
+   * Prepara las variables para que el jugador pueda ver el menu. Cambia el estado, selecciona la imagen y la musica.
+   * @return {[type]}
+   */
   setup(){
     this.state = "root";
     this.img = IMAGES.menu_nagusia;
@@ -12,6 +24,10 @@ class Menu {
       this.musica.play_menu_song();
   }
 
+  /**
+   * Cambia el estado a "over" para dar el juego por terminado. Tambien selecciona la imagen y la canción de terminado
+   * @return {[type]}
+   */
   setover(){
     this.state = "over";
     this.img = IMAGES.game_over;
@@ -19,6 +35,10 @@ class Menu {
       this.musica.play_over_song();
   }
 
+  /**
+   * Cambia el estado a "win" para cuando el jugador gana. Selecciona la imagen y la musica adecuada
+   * @return {[type]}
+   */
   setwin(){
     this.state = "win";
     this.img = IMAGES.success;
@@ -26,10 +46,18 @@ class Menu {
       this.musica.play_succ_song();
   }
 
+  /**
+   * Pausa la musica del juego
+   * @return {[type]}
+   */
   end(){
     this.musica.pause();
   }
 
+  /**
+   * Funcion utilizada cuando el juego termina para controlar que el jugador le da al boton "volver". Te lleva al menu
+   * @return {[type]}
+   */
   over_mouse(){
     if(mouseIsPressed){
       if(mouseButton == LEFT){
@@ -42,6 +70,11 @@ class Menu {
     }
   }
 
+  /**
+   * Controla los clicks del ratón en el menu principal. Dependiendo de donde clicke accederá a una parte del juego u otra (jugar, opciones, ranking, intrucciones).
+   * También se encarga de seleccionar el estado siguiente y de resaltar la opción seleccionada.
+   * @return {[type]}
+   */
   root_mouse(){
     if(mouseX > 314 && mouseX < 406 && mouseY > 173 && mouseY < 200){ //jugar
       if (mouseIsPressed){
@@ -76,6 +109,10 @@ class Menu {
     }
   }
 
+  /**
+   * Función que se encarga de controlar los clicks en el menú de "opciones". Puede cambiar los valores de musica y del cuchillo seleccionado.
+   * @return {[type]}
+   */
   opciones_mouse(){
     if(mouseIsPressed){
       if(mouseButton == LEFT){
@@ -108,6 +145,10 @@ class Menu {
     }
   }
 
+  /**
+   * Controla las acciones dentro del menu de ranking.
+   * @return {[type]}
+   */
   ranking_mouse(){
     if(mouseIsPressed){
       if(mouseButton == LEFT){
@@ -118,6 +159,10 @@ class Menu {
     }
   }
 
+  /**
+   * Controla las acciones dentro del menu de instrucciones.
+   * @return {[type]}
+   */
   inst_mouse(){
     if(mouseIsPressed){
       if(mouseButton == LEFT){
@@ -128,6 +173,10 @@ class Menu {
     }
   }
 
+  /**
+   * Función que se encarga de la organización de cada una de las imagenes dependiendo del estado en el que se este.
+   * @return {[type]}
+   */
   draw(){
     clear();
     image(this.img, 0, 0);

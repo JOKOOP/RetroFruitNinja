@@ -17,6 +17,9 @@ class Menu {
 
   setover(){
     this.state = "over";
+    this.best_str = "";
+    this.worst_str = "";
+    Ranking.get_worst(this.loadWorst);
     this.img = IMAGES.game_over;
     if(OP_MUSICA) {
       this.musica.play_over_song();
@@ -25,6 +28,9 @@ class Menu {
 
   setwin(){
     this.state = "win";
+    this.best_str = "";
+    this.worst_str = "";
+    Ranking.get_best(this.loadBest);
     this.img = IMAGES.success;
     if(OP_MUSICA)
       this.musica.play_succ_song();
@@ -48,6 +54,9 @@ class Menu {
   }
 
   over_mouse(){
+    fill('#FFFFFF');
+    textFont(FONT, 30);
+    text(this.best_str + this.worst_str, 280, (this.best_str == "") ? 180 : 200);
     if(mouseIsPressed){
       if(mouseButton == LEFT){
         if(mouseX > 245 && mouseX < 500 && mouseY > 383 && mouseY < 420){ //volver
